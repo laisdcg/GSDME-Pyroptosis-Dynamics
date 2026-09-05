@@ -1,6 +1,6 @@
-### GSDME-Pyroptosis-Dynamics
+# GSDME-Pyroptosis-Dynamics
 
-# GSDME Systems-Oncology Boolean Network Pipeline
+## GSDME Systems-Oncology Boolean Network Pipeline
 
 Pipeline em R para integrar o modelo lógico `modelo_GINsim_GSDME_available.zginml` com controle de atratores, perturbações sustentadas, scRNA-seq, perfis multiômicos por paciente e aprendizado por reforço. A versão 1.1 inclui leitores e análises reprodutíveis para **GSE125449** e **GSE140228**. Todas as figuras são produzidas em PDF vetorial e PNG com 600 dpi.
 
