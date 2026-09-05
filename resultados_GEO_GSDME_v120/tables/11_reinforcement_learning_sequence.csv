@@ -1,0 +1,12 @@
+"step","action","reward","fate","pyroptosis_target_reached","GSDME_availability","GSDME_N","CASP3","CASP9","CYTOCHROME_C","MOMP","BAX","BCL2","PUMA","p53_ACTIVE","miR_204_5p","lncRNA_MALAT1","ROS","MITO_DAMAGE","PGC1A","p21","CyclinD_CDK46","RB1","E2F1","DDR_fixed_ON","PYROPTOSIS_GSDME","SURVIVAL","RESISTANCE","PROLIFERATION","APOPTOSIS","CELL_CYCLE_ARREST","SIRT1"
+1,"miR204_OE",-11.2,"Resistance",FALSE,1,0,0,0,0,0,0,1,0,0,1,1,1,0,1,0,1,0,1,1,0,1,1,0,0,0,0
+2,"NONE",-8.01,"Resistance",FALSE,1,0,0,0,0,0,0,1,0,1,0,1,1,0,0,0,1,0,1,1,0,0,1,0,0,0,0
+3,"miR204_OE",-0.2,"Other",FALSE,1,0,0,0,0,0,0,1,1,1,1,0,1,1,0,1,1,0,1,1,0,0,0,0,0,0,0
+4,"NONE",-0.01,"Other",FALSE,1,0,0,0,0,0,0,0,1,1,1,0,1,1,0,1,0,0,1,1,0,0,0,0,0,0,0
+5,"NONE",0.99,"Other",FALSE,1,0,0,0,0,0,1,0,1,1,1,0,1,1,0,1,0,1,1,1,0,0,0,0,0,0,0
+6,"NONE",0.99,"Other",FALSE,1,0,0,0,0,1,1,0,1,1,1,0,1,1,0,1,0,1,0,1,0,0,0,0,0,0,0
+7,"NONE",0.99,"Cell-cycle arrest",FALSE,1,0,0,0,1,1,1,0,1,1,1,0,1,1,0,1,0,1,0,1,0,0,0,0,0,1,0
+8,"NONE",0.99,"Cell-cycle arrest",FALSE,1,0,0,1,1,1,1,0,1,1,1,0,1,1,0,1,0,1,0,1,0,0,0,0,0,1,0
+9,"NONE",3.99,"Cell-cycle arrest",FALSE,1,0,1,1,1,1,1,0,1,1,1,0,1,1,0,1,0,1,0,1,0,0,0,0,0,1,0
+10,"NONE",8.99,"Apoptosis",FALSE,1,1,1,1,1,1,1,0,1,1,1,0,1,1,0,1,0,1,0,1,0,0,0,0,1,0,0
+11,"NONE",34.99,"Pyroptosis",TRUE,1,1,1,1,1,1,1,0,1,1,1,0,1,1,0,1,0,1,0,1,1,0,0,0,0,0,0

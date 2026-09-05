@@ -1,0 +1,50 @@
+"accession","experiment","validation_group","validation_scope","fate","mean_probability","n_cells"
+"GSE125449","GSE125449_Set1","Set1","tumour-cell-intrinsic observational concordance","Pyroptosis",0.208,500
+"GSE125449","GSE125449_Set1","Set1","tumour-cell-intrinsic observational concordance","Apoptosis",0.188,500
+"GSE125449","GSE125449_Set1","Set1","tumour-cell-intrinsic observational concordance","Resistance",0.604,500
+"GSE125449","GSE125449_Set1","Set1","tumour-cell-intrinsic observational concordance","Proliferation",0,500
+"GSE125449","GSE125449_Set1","Set1","tumour-cell-intrinsic observational concordance","Cell-cycle arrest",0,500
+"GSE125449","GSE125449_Set1","Set1","tumour-cell-intrinsic observational concordance","Survival",0,500
+"GSE125449","GSE125449_Set1","Set1","tumour-cell-intrinsic observational concordance","Other",0,500
+"GSE125449","GSE125449_Set2","Set2","tumour-cell-intrinsic observational concordance","Pyroptosis",0.22,500
+"GSE125449","GSE125449_Set2","Set2","tumour-cell-intrinsic observational concordance","Apoptosis",0.214,500
+"GSE125449","GSE125449_Set2","Set2","tumour-cell-intrinsic observational concordance","Resistance",0.566,500
+"GSE125449","GSE125449_Set2","Set2","tumour-cell-intrinsic observational concordance","Proliferation",0,500
+"GSE125449","GSE125449_Set2","Set2","tumour-cell-intrinsic observational concordance","Cell-cycle arrest",0,500
+"GSE125449","GSE125449_Set2","Set2","tumour-cell-intrinsic observational concordance","Survival",0,500
+"GSE125449","GSE125449_Set2","Set2","tumour-cell-intrinsic observational concordance","Other",0,500
+"GSE140228","GSE140228_Droplet","Ascites","CD45+ immune-microenvironment observational support only","Pyroptosis",0.07,100
+"GSE140228","GSE140228_Droplet","Ascites","CD45+ immune-microenvironment observational support only","Apoptosis",0.19,100
+"GSE140228","GSE140228_Droplet","Ascites","CD45+ immune-microenvironment observational support only","Resistance",0.74,100
+"GSE140228","GSE140228_Droplet","Ascites","CD45+ immune-microenvironment observational support only","Proliferation",0,100
+"GSE140228","GSE140228_Droplet","Ascites","CD45+ immune-microenvironment observational support only","Cell-cycle arrest",0,100
+"GSE140228","GSE140228_Droplet","Ascites","CD45+ immune-microenvironment observational support only","Survival",0,100
+"GSE140228","GSE140228_Droplet","Ascites","CD45+ immune-microenvironment observational support only","Other",0,100
+"GSE140228","GSE140228_Droplet","Blood","CD45+ immune-microenvironment observational support only","Pyroptosis",0.122222222222222,90
+"GSE140228","GSE140228_Droplet","Blood","CD45+ immune-microenvironment observational support only","Apoptosis",0.166666666666667,90
+"GSE140228","GSE140228_Droplet","Blood","CD45+ immune-microenvironment observational support only","Resistance",0.711111111111111,90
+"GSE140228","GSE140228_Droplet","Blood","CD45+ immune-microenvironment observational support only","Proliferation",0,90
+"GSE140228","GSE140228_Droplet","Blood","CD45+ immune-microenvironment observational support only","Cell-cycle arrest",0,90
+"GSE140228","GSE140228_Droplet","Blood","CD45+ immune-microenvironment observational support only","Survival",0,90
+"GSE140228","GSE140228_Droplet","Blood","CD45+ immune-microenvironment observational support only","Other",0,90
+"GSE140228","GSE140228_Droplet","Lymphnode","CD45+ immune-microenvironment observational support only","Pyroptosis",0.215686274509804,102
+"GSE140228","GSE140228_Droplet","Lymphnode","CD45+ immune-microenvironment observational support only","Apoptosis",0.117647058823529,102
+"GSE140228","GSE140228_Droplet","Lymphnode","CD45+ immune-microenvironment observational support only","Resistance",0.666666666666667,102
+"GSE140228","GSE140228_Droplet","Lymphnode","CD45+ immune-microenvironment observational support only","Proliferation",0,102
+"GSE140228","GSE140228_Droplet","Lymphnode","CD45+ immune-microenvironment observational support only","Cell-cycle arrest",0,102
+"GSE140228","GSE140228_Droplet","Lymphnode","CD45+ immune-microenvironment observational support only","Survival",0,102
+"GSE140228","GSE140228_Droplet","Lymphnode","CD45+ immune-microenvironment observational support only","Other",0,102
+"GSE140228","GSE140228_Droplet","Normal","CD45+ immune-microenvironment observational support only","Pyroptosis",0.176470588235294,102
+"GSE140228","GSE140228_Droplet","Normal","CD45+ immune-microenvironment observational support only","Apoptosis",0.0980392156862745,102
+"GSE140228","GSE140228_Droplet","Normal","CD45+ immune-microenvironment observational support only","Resistance",0.725490196078431,102
+"GSE140228","GSE140228_Droplet","Normal","CD45+ immune-microenvironment observational support only","Proliferation",0,102
+"GSE140228","GSE140228_Droplet","Normal","CD45+ immune-microenvironment observational support only","Cell-cycle arrest",0,102
+"GSE140228","GSE140228_Droplet","Normal","CD45+ immune-microenvironment observational support only","Survival",0,102
+"GSE140228","GSE140228_Droplet","Normal","CD45+ immune-microenvironment observational support only","Other",0,102
+"GSE140228","GSE140228_Droplet","Tumor","CD45+ immune-microenvironment observational support only","Pyroptosis",0.141509433962264,106
+"GSE140228","GSE140228_Droplet","Tumor","CD45+ immune-microenvironment observational support only","Apoptosis",0.216981132075472,106
+"GSE140228","GSE140228_Droplet","Tumor","CD45+ immune-microenvironment observational support only","Resistance",0.641509433962264,106
+"GSE140228","GSE140228_Droplet","Tumor","CD45+ immune-microenvironment observational support only","Proliferation",0,106
+"GSE140228","GSE140228_Droplet","Tumor","CD45+ immune-microenvironment observational support only","Cell-cycle arrest",0,106
+"GSE140228","GSE140228_Droplet","Tumor","CD45+ immune-microenvironment observational support only","Survival",0,106
+"GSE140228","GSE140228_Droplet","Tumor","CD45+ immune-microenvironment observational support only","Other",0,106
