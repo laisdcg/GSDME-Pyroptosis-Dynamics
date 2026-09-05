@@ -1,4 +1,4 @@
-## GSDME-Pyroptosis-Dynamics
+### GSDME-Pyroptosis-Dynamics
 
 # GSDME Systems-Oncology Boolean Network Pipeline
 
