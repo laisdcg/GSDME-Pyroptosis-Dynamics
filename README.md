@@ -911,23 +911,3 @@ Before writing or submitting the manuscript, verify:
 10. Magaña-López G, et al. scBoolSeq: linking scRNA-seq statistics and Boolean
     dynamics. *PLoS Comput Biol.* 2024;20:e1011620.
     DOI: 10.1371/journal.pcbi.1011620.
-
----
-
-## 24. Archiving for submission
-
-Archive the following together:
-
-1. final `.zginml` model;
-2. the three R scripts;
-3. this README;
-4. final consensus and epistasis tables;
-5. Figures 1–8 and supplementary figures in PDF and PNG;
-6. pipeline, consensus and epistasis logs;
-7. `sessionInfo.txt` from every analysis layer;
-8. output manifests and model checksums;
-9. GEO accession information and cached-file manifests;
-10. manuscript and supplementary-material versions generated from these final
-    outputs.
-
-This archive is the computational provenance package for the study.
