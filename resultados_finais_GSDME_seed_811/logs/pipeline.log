@@ -1,0 +1,5 @@
+2026-09-06 17:47:43 | Loaded model 'modelo_GINsim_GSDME_available': 27 nodes, 39 edges, input(s): GSDME_availability 
+2026-09-06 17:48:13 | Generic scRNA-seq module skipped: --no-demo used without --scrna 
+2026-09-06 17:51:57 | Supplementary edge-correlation figure skipped: fewer than three evaluable edges; table 18 retained 
+2026-09-06 17:51:57 | Multi-omics module skipped: --no-demo used without --multiomics 
+2026-09-06 17:52:57 | Pipeline completed. Results: /home/usuario/Downloads/GSDME_Oncology_Pipeline/resultados_finais_GSDME_seed_811 
