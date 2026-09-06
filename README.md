@@ -77,7 +77,7 @@ regulator of the complete network.
 | `GSDME_consensus_across_seeds.R` | 1.1.0 | Combines five complete seed folders after quality control |
 | `GSDME_in_silico_epistasis.R` | 1.0.0 | Performs matched single/double perturbations and rescue analysis |
 | `modelo_GINsim_GSDME_available.zginml` | final model | GINsim logical-network source |
-| `README_GSDME_COMPLETE.md` | current | Complete execution and interpretation guide |
+| `README.md` | current | Complete execution and interpretation guide |
 
 Do not rename node IDs inside the GINsim model unless every logical rule,
 mapping and intervention that references those IDs is also updated.
