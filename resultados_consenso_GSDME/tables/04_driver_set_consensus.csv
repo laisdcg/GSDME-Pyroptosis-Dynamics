@@ -1,0 +1,9 @@
+"size","intervention","n_seeds_present","success_rate_n","success_rate_mean","success_rate_sd","success_rate_se","success_rate_ci_low","success_rate_ci_high","success_rate_min","success_rate_max","robust_numeric_n","robust_seed_fraction","robust_numeric_sd","robust_numeric_se","robust_numeric_ci_low","robust_numeric_ci_high","robust_numeric_min","robust_numeric_max","selection_frequency"
+1,"BAX=1",5,5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,1
+1,"BCL2=0",5,5,0.0652777777777778,0.0253258090677923,0.0113260461321528,0.0338316324329176,0.0967239231226379,0.0347222222222222,0.0902777777777778,5,0,0,0,0,0,0,0,1
+1,"CASP3=1",5,5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,1
+1,"lncRNA_MALAT1=0",5,5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,1
+1,"miR_204_5p=1",5,5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,1
+1,"p53_ACTIVE=1",5,5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,1
+1,"PGC1A=0",5,5,0.0722222222222222,0.021739549781248,0.00972222222222223,0.0452290059216881,0.0992154385227563,0.0486111111111111,0.0902777777777778,5,0,0,0,0,0,0,0,1
+1,"SIRT1=0",5,5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,1
