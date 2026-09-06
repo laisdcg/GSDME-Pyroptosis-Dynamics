@@ -170,7 +170,7 @@ GSDME_Oncology_Pipeline/
 ├── GSDME_consensus_across_seeds.R
 ├── GSDME_in_silico_epistasis.R
 ├── modelo_GINsim_GSDME_available.zginml
-├── README_GSDME_COMPLETE.md
+├── README.md
 ├── GEO_scRNA_data/
 │   ├── GSE125449/
 │   └── GSE140228/
