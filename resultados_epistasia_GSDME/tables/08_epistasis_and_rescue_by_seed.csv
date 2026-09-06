@@ -1,0 +1,61 @@
+"seed","initialisation","pair_id","upstream","downstream","double","expected_interpretation","reference_pyroptosis","upstream_pyroptosis","downstream_pyroptosis","double_pyroptosis","upstream_effect","rescue_fraction","downstream_dominance","downstream_dominant"
+101,"Global random","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.49,1,0,0,0.51,1.96078431372549,1,TRUE
+101,"Global random","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.49,1,0,0,0.51,1.96078431372549,1,TRUE
+101,"Global random","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.49,1,0,0,0.51,1.96078431372549,1,TRUE
+101,"Global random","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.49,1,0,0,0.51,1.96078431372549,1,TRUE
+101,"Global random","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.49,1,0,0,0.51,1.96078431372549,1,TRUE
+101,"Global random","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.49,1,0,0,0.51,1.96078431372549,1,TRUE
+101,"Resistant-local","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.07,1,0,0,0.93,1.0752688172043,1,TRUE
+101,"Resistant-local","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.07,1,0,0,0.93,1.0752688172043,1,TRUE
+101,"Resistant-local","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.07,1,0,0,0.93,1.0752688172043,1,TRUE
+101,"Resistant-local","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.07,1,0,0,0.93,1.0752688172043,1,TRUE
+101,"Resistant-local","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.07,1,0,0,0.93,1.0752688172043,1,TRUE
+101,"Resistant-local","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.07,1,0,0,0.93,1.0752688172043,1,TRUE
+204,"Global random","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.498,1,0,0,0.502,1.99203187250996,1,TRUE
+204,"Global random","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.498,1,0,0,0.502,1.99203187250996,1,TRUE
+204,"Global random","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.498,1,0,0,0.502,1.99203187250996,1,TRUE
+204,"Global random","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.498,1,0,0,0.502,1.99203187250996,1,TRUE
+204,"Global random","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.498,1,0,0,0.502,1.99203187250996,1,TRUE
+204,"Global random","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.498,1,0,0,0.502,1.99203187250996,1,TRUE
+204,"Resistant-local","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.066,1,0,0,0.934,1.07066381156317,1,TRUE
+204,"Resistant-local","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.066,1,0,0,0.934,1.07066381156317,1,TRUE
+204,"Resistant-local","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.066,1,0,0,0.934,1.07066381156317,1,TRUE
+204,"Resistant-local","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.066,1,0,0,0.934,1.07066381156317,1,TRUE
+204,"Resistant-local","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.066,1,0,0,0.934,1.07066381156317,1,TRUE
+204,"Resistant-local","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.066,1,0,0,0.934,1.07066381156317,1,TRUE
+307,"Global random","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.512,1,0,0,0.488,2.04918032786885,1,TRUE
+307,"Global random","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.512,1,0,0,0.488,2.04918032786885,1,TRUE
+307,"Global random","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.512,1,0,0,0.488,2.04918032786885,1,TRUE
+307,"Global random","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.512,1,0,0,0.488,2.04918032786885,1,TRUE
+307,"Global random","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.512,1,0,0,0.488,2.04918032786885,1,TRUE
+307,"Global random","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.512,1,0,0,0.488,2.04918032786885,1,TRUE
+307,"Resistant-local","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.096,1,0,0,0.904,1.10619469026549,1,TRUE
+307,"Resistant-local","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.096,1,0,0,0.904,1.10619469026549,1,TRUE
+307,"Resistant-local","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.096,1,0,0,0.904,1.10619469026549,1,TRUE
+307,"Resistant-local","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.096,1,0,0,0.904,1.10619469026549,1,TRUE
+307,"Resistant-local","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.096,1,0,0,0.904,1.10619469026549,1,TRUE
+307,"Resistant-local","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.096,1,0,0,0.904,1.10619469026549,1,TRUE
+509,"Global random","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.46,1,0,0,0.54,1.85185185185185,1,TRUE
+509,"Global random","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.46,1,0,0,0.54,1.85185185185185,1,TRUE
+509,"Global random","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.46,1,0,0,0.54,1.85185185185185,1,TRUE
+509,"Global random","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.46,1,0,0,0.54,1.85185185185185,1,TRUE
+509,"Global random","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.46,1,0,0,0.54,1.85185185185185,1,TRUE
+509,"Global random","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.46,1,0,0,0.54,1.85185185185185,1,TRUE
+509,"Resistant-local","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.08,1,0,0,0.92,1.08695652173913,1,TRUE
+509,"Resistant-local","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.08,1,0,0,0.92,1.08695652173913,1,TRUE
+509,"Resistant-local","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.08,1,0,0,0.92,1.08695652173913,1,TRUE
+509,"Resistant-local","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.08,1,0,0,0.92,1.08695652173913,1,TRUE
+509,"Resistant-local","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.08,1,0,0,0.92,1.08695652173913,1,TRUE
+509,"Resistant-local","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.08,1,0,0,0.92,1.08695652173913,1,TRUE
+811,"Global random","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.504,1,0,0,0.496,2.01612903225806,1,TRUE
+811,"Global random","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.504,1,0,0,0.496,2.01612903225806,1,TRUE
+811,"Global random","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.504,1,0,0,0.496,2.01612903225806,1,TRUE
+811,"Global random","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.504,1,0,0,0.496,2.01612903225806,1,TRUE
+811,"Global random","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.504,1,0,0,0.496,2.01612903225806,1,TRUE
+811,"Global random","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.504,1,0,0,0.496,2.01612903225806,1,TRUE
+811,"Resistant-local","MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition",0.086,1,0,0,0.914,1.09409190371991,1,TRUE
+811,"Resistant-local","miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation",0.086,1,0,0,0.914,1.09409190371991,1,TRUE
+811,"Resistant-local","SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition",0.086,1,0,0,0.914,1.09409190371991,1,TRUE
+811,"Resistant-local","p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation",0.086,1,0,0,0.914,1.09409190371991,1,TRUE
+811,"Resistant-local","CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis",0.086,1,0,0,0.914,1.09409190371991,1,TRUE
+811,"Resistant-local","MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition",0.086,1,0,0,0.914,1.09409190371991,1,TRUE

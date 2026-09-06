@@ -1,0 +1,267 @@
+"initialisation","condition","condition_label","fate","frequency_n","frequency_mean","frequency_sd","frequency_se","frequency_ci_low","frequency_ci_high","frequency_min","frequency_max"
+"Global random","CASP3_OFF","CASP3 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","CASP3_OFF","CASP3 inhibition","Cell-cycle arrest",5,0.5,0.018165902124585,0.00812403840463597,0.47744405333701,0.52255594666299,0.476,0.522
+"Global random","CASP3_OFF","CASP3 inhibition","Other",5,0,0,0,0,0,0,0
+"Global random","CASP3_OFF","CASP3 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Global random","CASP3_OFF","CASP3 inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","CASP3_OFF","CASP3 inhibition","Resistance",5,0.5,0.018165902124585,0.00812403840463597,0.47744405333701,0.52255594666299,0.478,0.524
+"Global random","CASP3_OFF","CASP3 inhibition","Survival",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON","CASP3 activation","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON","CASP3 activation","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON","CASP3 activation","Other",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON","CASP3 activation","Proliferation",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON","CASP3 activation","Pyroptosis",5,1,0,0,1,1,1,1
+"Global random","CASP3_ON","CASP3 activation","Resistance",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON","CASP3 activation","Survival",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Apoptosis",5,1,0,0,1,1,1,1
+"Global random","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Other",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Proliferation",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Resistance",5,0,0,0,0,0,0,0
+"Global random","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Survival",5,0,0,0,0,0,0,0
+"Global random","GSDME_OFF","GSDME unavailable","Apoptosis",5,0.4952,0.0152052622469986,0.00680000000000001,0.476320173284655,0.514079826715345,0.474,0.51
+"Global random","GSDME_OFF","GSDME unavailable","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","GSDME_OFF","GSDME unavailable","Other",5,0,0,0,0,0,0,0
+"Global random","GSDME_OFF","GSDME unavailable","Proliferation",5,0,0,0,0,0,0,0
+"Global random","GSDME_OFF","GSDME unavailable","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","GSDME_OFF","GSDME unavailable","Resistance",5,0.5048,0.0152052622469986,0.00680000000000001,0.485920173284655,0.523679826715345,0.49,0.526
+"Global random","GSDME_OFF","GSDME unavailable","Survival",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF","MALAT1 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF","MALAT1 inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF","MALAT1 inhibition","Other",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF","MALAT1 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF","MALAT1 inhibition","Pyroptosis",5,1,0,0,1,1,1,1
+"Global random","MALAT1_OFF","MALAT1 inhibition","Resistance",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF","MALAT1 inhibition","Survival",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Apoptosis",5,1,0,0,1,1,1,1
+"Global random","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Other",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Proliferation",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Resistance",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Survival",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Other",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Resistance",5,1,0,0,1,1,1,1
+"Global random","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Survival",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Other",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Proliferation",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Resistance",5,1,0,0,1,1,1,1
+"Global random","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Survival",5,0,0,0,0,0,0,0
+"Global random","miR204_OFF","miR-204-5p inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","miR204_OFF","miR-204-5p inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","miR204_OFF","miR-204-5p inhibition","Other",5,0,0,0,0,0,0,0
+"Global random","miR204_OFF","miR-204-5p inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Global random","miR204_OFF","miR-204-5p inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","miR204_OFF","miR-204-5p inhibition","Resistance",5,1,0,0,1,1,1,1
+"Global random","miR204_OFF","miR-204-5p inhibition","Survival",5,0,0,0,0,0,0,0
+"Global random","miR204_ON","miR-204-5p activation","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","miR204_ON","miR-204-5p activation","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","miR204_ON","miR-204-5p activation","Other",5,0,0,0,0,0,0,0
+"Global random","miR204_ON","miR-204-5p activation","Proliferation",5,0,0,0,0,0,0,0
+"Global random","miR204_ON","miR-204-5p activation","Pyroptosis",5,1,0,0,1,1,1,1
+"Global random","miR204_ON","miR-204-5p activation","Resistance",5,0,0,0,0,0,0,0
+"Global random","miR204_ON","miR-204-5p activation","Survival",5,0,0,0,0,0,0,0
+"Global random","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Other",5,0,0,0,0,0,0,0
+"Global random","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Proliferation",5,0,0,0,0,0,0,0
+"Global random","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Resistance",5,1,0,0,1,1,1,1
+"Global random","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Survival",5,0,0,0,0,0,0,0
+"Global random","p53_OFF","Active p53 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","p53_OFF","Active p53 inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","p53_OFF","Active p53 inhibition","Other",5,0,0,0,0,0,0,0
+"Global random","p53_OFF","Active p53 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Global random","p53_OFF","Active p53 inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","p53_OFF","Active p53 inhibition","Resistance",5,1,0,0,1,1,1,1
+"Global random","p53_OFF","Active p53 inhibition","Survival",5,0,0,0,0,0,0,0
+"Global random","p53_ON","Active p53 activation","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","p53_ON","Active p53 activation","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","p53_ON","Active p53 activation","Other",5,0,0,0,0,0,0,0
+"Global random","p53_ON","Active p53 activation","Proliferation",5,0,0,0,0,0,0,0
+"Global random","p53_ON","Active p53 activation","Pyroptosis",5,1,0,0,1,1,1,1
+"Global random","p53_ON","Active p53 activation","Resistance",5,0,0,0,0,0,0,0
+"Global random","p53_ON","Active p53 activation","Survival",5,0,0,0,0,0,0,0
+"Global random","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Cell-cycle arrest",5,1,0,0,1,1,1,1
+"Global random","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Other",5,0,0,0,0,0,0,0
+"Global random","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Global random","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Resistance",5,0,0,0,0,0,0,0
+"Global random","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Survival",5,0,0,0,0,0,0,0
+"Global random","Reference","Reference: DDR ON + GSDME available","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","Reference","Reference: DDR ON + GSDME available","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","Reference","Reference: DDR ON + GSDME available","Other",5,0,0,0,0,0,0,0
+"Global random","Reference","Reference: DDR ON + GSDME available","Proliferation",5,0,0,0,0,0,0,0
+"Global random","Reference","Reference: DDR ON + GSDME available","Pyroptosis",5,0.4928,0.0200299775336868,0.00895767827062347,0.467929498011591,0.517670501988409,0.46,0.512
+"Global random","Reference","Reference: DDR ON + GSDME available","Resistance",5,0.5072,0.0200299775336869,0.00895767827062348,0.482329498011591,0.532070501988409,0.488,0.54
+"Global random","Reference","Reference: DDR ON + GSDME available","Survival",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF","SIRT1 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF","SIRT1 inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF","SIRT1 inhibition","Other",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF","SIRT1 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF","SIRT1 inhibition","Pyroptosis",5,1,0,0,1,1,1,1
+"Global random","SIRT1_OFF","SIRT1 inhibition","Resistance",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF","SIRT1 inhibition","Survival",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Apoptosis",5,1,0,0,1,1,1,1
+"Global random","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Other",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Proliferation",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Resistance",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Survival",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Other",5,1,0,0,1,1,1,1
+"Global random","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Resistance",5,0,0,0,0,0,0,0
+"Global random","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Survival",5,0,0,0,0,0,0,0
+"Global random","SIRT1_ON","SIRT1 activation","Apoptosis",5,0,0,0,0,0,0,0
+"Global random","SIRT1_ON","SIRT1 activation","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Global random","SIRT1_ON","SIRT1 activation","Other",5,0,0,0,0,0,0,0
+"Global random","SIRT1_ON","SIRT1 activation","Proliferation",5,0,0,0,0,0,0,0
+"Global random","SIRT1_ON","SIRT1 activation","Pyroptosis",5,0,0,0,0,0,0,0
+"Global random","SIRT1_ON","SIRT1 activation","Resistance",5,1,0,0,1,1,1,1
+"Global random","SIRT1_ON","SIRT1 activation","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_OFF","CASP3 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_OFF","CASP3 inhibition","Cell-cycle arrest",5,0.0768,0.00782304288624318,0.00349857113690718,0.0670864092917478,0.0865135907082522,0.066,0.084
+"Resistant-local","CASP3_OFF","CASP3 inhibition","Other",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_OFF","CASP3 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_OFF","CASP3 inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_OFF","CASP3 inhibition","Resistance",5,0.9232,0.00782304288624319,0.00349857113690718,0.913486409291748,0.932913590708252,0.916,0.934
+"Resistant-local","CASP3_OFF","CASP3 inhibition","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON","CASP3 activation","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON","CASP3 activation","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON","CASP3 activation","Other",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON","CASP3 activation","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON","CASP3 activation","Pyroptosis",5,1,0,0,1,1,1,1
+"Resistant-local","CASP3_ON","CASP3 activation","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON","CASP3 activation","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Apoptosis",5,1,0,0,1,1,1,1
+"Resistant-local","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Other",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","CASP3_ON__GSDME_OFF","CASP3 activation + GSDME unavailable","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","GSDME_OFF","GSDME unavailable","Apoptosis",5,0.0756,0.00876356092008266,0.00391918358845309,0.0647186019094679,0.0864813980905321,0.062,0.084
+"Resistant-local","GSDME_OFF","GSDME unavailable","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","GSDME_OFF","GSDME unavailable","Other",5,0,0,0,0,0,0,0
+"Resistant-local","GSDME_OFF","GSDME unavailable","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","GSDME_OFF","GSDME unavailable","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","GSDME_OFF","GSDME unavailable","Resistance",5,0.9244,0.00876356092008262,0.00391918358845307,0.913518601909468,0.935281398090532,0.916,0.938
+"Resistant-local","GSDME_OFF","GSDME unavailable","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF","MALAT1 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF","MALAT1 inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF","MALAT1 inhibition","Other",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF","MALAT1 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF","MALAT1 inhibition","Pyroptosis",5,1,0,0,1,1,1,1
+"Resistant-local","MALAT1_OFF","MALAT1 inhibition","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF","MALAT1 inhibition","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Apoptosis",5,1,0,0,1,1,1,1
+"Resistant-local","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Other",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__GSDME_OFF","MALAT1 inhibition + GSDME unavailable","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Other",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Resistance",5,1,0,0,1,1,1,1
+"Resistant-local","MALAT1_OFF__miR204_OFF","MALAT1 inhibition + miR-204-5p inhibition","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Other",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Resistance",5,1,0,0,1,1,1,1
+"Resistant-local","MALAT1_OFF__SIRT1_ON","MALAT1 inhibition + SIRT1 rescue","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_OFF","miR-204-5p inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_OFF","miR-204-5p inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_OFF","miR-204-5p inhibition","Other",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_OFF","miR-204-5p inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_OFF","miR-204-5p inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_OFF","miR-204-5p inhibition","Resistance",5,1,0,0,1,1,1,1
+"Resistant-local","miR204_OFF","miR-204-5p inhibition","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON","miR-204-5p activation","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON","miR-204-5p activation","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON","miR-204-5p activation","Other",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON","miR-204-5p activation","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON","miR-204-5p activation","Pyroptosis",5,1,0,0,1,1,1,1
+"Resistant-local","miR204_ON","miR-204-5p activation","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON","miR-204-5p activation","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Other",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Resistance",5,1,0,0,1,1,1,1
+"Resistant-local","miR204_ON__SIRT1_ON","miR-204-5p activation + SIRT1 rescue","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","p53_OFF","Active p53 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","p53_OFF","Active p53 inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","p53_OFF","Active p53 inhibition","Other",5,0,0,0,0,0,0,0
+"Resistant-local","p53_OFF","Active p53 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","p53_OFF","Active p53 inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","p53_OFF","Active p53 inhibition","Resistance",5,1,0,0,1,1,1,1
+"Resistant-local","p53_OFF","Active p53 inhibition","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON","Active p53 activation","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON","Active p53 activation","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON","Active p53 activation","Other",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON","Active p53 activation","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON","Active p53 activation","Pyroptosis",5,1,0,0,1,1,1,1
+"Resistant-local","p53_ON","Active p53 activation","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON","Active p53 activation","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Cell-cycle arrest",5,1,0,0,1,1,1,1
+"Resistant-local","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Other",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","p53_ON__CASP3_OFF","Active p53 activation + CASP3 inhibition","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","Reference","Reference: DDR ON + GSDME available","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","Reference","Reference: DDR ON + GSDME available","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","Reference","Reference: DDR ON + GSDME available","Other",5,0,0,0,0,0,0,0
+"Resistant-local","Reference","Reference: DDR ON + GSDME available","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","Reference","Reference: DDR ON + GSDME available","Pyroptosis",5,0.0796,0.0121161049846888,0.00541848687365763,0.0645558686420548,0.0946441313579452,0.066,0.096
+"Resistant-local","Reference","Reference: DDR ON + GSDME available","Resistance",5,0.9204,0.0121161049846888,0.00541848687365763,0.905355868642055,0.935444131357945,0.904,0.934
+"Resistant-local","Reference","Reference: DDR ON + GSDME available","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF","SIRT1 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF","SIRT1 inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF","SIRT1 inhibition","Other",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF","SIRT1 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF","SIRT1 inhibition","Pyroptosis",5,1,0,0,1,1,1,1
+"Resistant-local","SIRT1_OFF","SIRT1 inhibition","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF","SIRT1 inhibition","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Apoptosis",5,1,0,0,1,1,1,1
+"Resistant-local","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Other",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__GSDME_OFF","SIRT1 inhibition + GSDME unavailable","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Other",5,1,0,0,1,1,1,1
+"Resistant-local","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Resistance",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_OFF__p53_OFF","SIRT1 inhibition + active p53 inhibition","Survival",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_ON","SIRT1 activation","Apoptosis",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_ON","SIRT1 activation","Cell-cycle arrest",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_ON","SIRT1 activation","Other",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_ON","SIRT1 activation","Proliferation",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_ON","SIRT1 activation","Pyroptosis",5,0,0,0,0,0,0,0
+"Resistant-local","SIRT1_ON","SIRT1 activation","Resistance",5,1,0,0,1,1,1,1
+"Resistant-local","SIRT1_ON","SIRT1 activation","Survival",5,0,0,0,0,0,0,0
