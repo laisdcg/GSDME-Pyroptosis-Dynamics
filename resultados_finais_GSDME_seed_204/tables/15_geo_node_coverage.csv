@@ -1,0 +1,49 @@
+"accession","experiment","platform","validation_scope","node","measured","matched_aliases","detection_rate","mean_activation_probability","n_cells"
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","GSDME_availability",TRUE,"DFNA5",0.0783475783475783,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","CASP3",TRUE,"CASP3",0.183760683760684,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","CASP9",TRUE,"CASP9",0.0726495726495727,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","CYTOCHROME_C",TRUE,"CYCS",0.743589743589744,0.744296953693429,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","BAX",TRUE,"BAX",0.391737891737892,0.399358993188701,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","BCL2",TRUE,"BCL2",0.0299145299145299,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","PUMA",TRUE,"BBC3",0.0854700854700855,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","p53_ACTIVE",TRUE,"TP53",0.170940170940171,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","miR_204_5p",FALSE,"",0,,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","lncRNA_MALAT1",TRUE,"MALAT1",0.975783475783476,0.901343069286635,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","PGC1A",TRUE,"PPARGC1A",0.196581196581197,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","p21",TRUE,"CDKN1A",0.465811965811966,0.473139390951293,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","CyclinD_CDK46",TRUE,"CCND1;CDK4;CDK6",0.650997150997151,0.807065648546169,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","RB1",TRUE,"RB1",0.198005698005698,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","E2F1",TRUE,"E2F1",0.0128205128205128,0.5,702
+"GSE125449","GSE125449_Set1","10x","tumour-cell-intrinsic observational concordance","SIRT1",TRUE,"SIRT1",0.165242165242165,0.5,702
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","GSDME_availability",TRUE,"DFNA5",0.0294573643410853,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","CASP3",TRUE,"CASP3",0.109302325581395,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","CASP9",TRUE,"CASP9",0.0441860465116279,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","CYTOCHROME_C",TRUE,"CYCS",0.756589147286822,0.756267971917043,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","BAX",TRUE,"BAX",0.495348837209302,0.496773957158718,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","BCL2",TRUE,"BCL2",0.0744186046511628,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","PUMA",TRUE,"BBC3",0.126356589147287,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","p53_ACTIVE",TRUE,"TP53",0.150387596899225,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","miR_204_5p",FALSE,"",0,,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","lncRNA_MALAT1",TRUE,"MALAT1",0.972093023255814,0.598884648399011,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","PGC1A",TRUE,"PPARGC1A",0.0682170542635659,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","p21",TRUE,"CDKN1A",0.303875968992248,0.306439832985969,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","CyclinD_CDK46",TRUE,"CCND1;CDK4;CDK6",0.754263565891473,0.754493969683053,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","RB1",TRUE,"RB1",0.169767441860465,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","E2F1",TRUE,"E2F1",0.0488372093023256,0.5,1290
+"GSE125449","GSE125449_Set2","10x","tumour-cell-intrinsic observational concordance","SIRT1",TRUE,"SIRT1",0.0813953488372093,0.5,1290
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","GSDME_availability",TRUE,"DFNA5",0.0105,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","CASP3",TRUE,"CASP3",0.155,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","CASP9",TRUE,"CASP9",0.0335,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","CYTOCHROME_C",TRUE,"CYCS",0.557,0.557769089113284,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","BAX",TRUE,"BAX",0.392,0.393348407361239,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","BCL2",TRUE,"BCL2",0.1615,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","PUMA",TRUE,"BBC3",0.055,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","p53_ACTIVE",TRUE,"TP53",0.1135,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","miR_204_5p",TRUE,"MIR204",0,0.05,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","lncRNA_MALAT1",TRUE,"MALAT1",0.9785,0.903249155030419,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","PGC1A",TRUE,"PPARGC1A",0.0015,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","p21",TRUE,"CDKN1A",0.1925,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","CyclinD_CDK46",TRUE,"CCND1;CDK4;CDK6",0.227,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","RB1",TRUE,"RB1",0.1395,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","E2F1",TRUE,"E2F1",0.031,0.5,2000
+"GSE140228","GSE140228_Droplet","Droplet","CD45+ immune-microenvironment observational support only","SIRT1",TRUE,"SIRT1",0.06,0.5,2000
