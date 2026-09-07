@@ -862,7 +862,7 @@ Before writing or submitting the manuscript, verify:
 
 ---
 
-## 22. Recommended manuscript statement
+## 22. Study overview
 
 > We developed a literature-informed Boolean network to examine how the
 > MALAT1/miR-204-5p/SIRT1 axis may regulate access to a mitochondrial
