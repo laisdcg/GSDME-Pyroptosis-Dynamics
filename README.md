@@ -32,7 +32,7 @@ The central model-based question is:
 
 The proposed regulatory hierarchy is:
 
-`MALAT1 -| miR-204-5p -| SIRT1 -| active p53 -> PUMA/BAX -> CASP9/CASP3 -> GSDME-N -> pyroptosis`
+`MALAT1 -| miR-204-5p -| SIRT1 -| active p53 -> BAX -> CASP3 -> GSDME -> pyroptosis`
 
 The project tests the internal dynamic consequences of this hypothesis and its
 robustness across initial states, random seeds and single-cell-informed states.
