@@ -1,7 +1,0 @@
-"initialisation","gate_test","pyroptosis_drop_n","pyroptosis_drop_mean","pyroptosis_drop_sd","pyroptosis_drop_se","pyroptosis_drop_ci_low","pyroptosis_drop_ci_high","pyroptosis_drop_min","pyroptosis_drop_max","apoptosis_gain_n","apoptosis_gain_mean","apoptosis_gain_sd","apoptosis_gain_se","apoptosis_gain_ci_low","apoptosis_gain_ci_high","apoptosis_gain_min","apoptosis_gain_max","resistance_gain_n","resistance_gain_mean","resistance_gain_sd","resistance_gain_se","resistance_gain_ci_low","resistance_gain_ci_high","resistance_gain_min","resistance_gain_max"
-"Global random","CASP3 activation",5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,5,0,0,0,0,0,0,0
-"Global random","MALAT1 inhibition",5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,5,0,0,0,0,0,0,0
-"Global random","SIRT1 inhibition",5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,5,0,0,0,0,0,0,0
-"Resistant-local","CASP3 activation",5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,5,0,0,0,0,0,0,0
-"Resistant-local","MALAT1 inhibition",5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,5,0,0,0,0,0,0,0
-"Resistant-local","SIRT1 inhibition",5,1,0,0,1,1,1,1,5,1,0,0,1,1,1,1,5,0,0,0,0,0,0,0
