@@ -1,6 +1,0 @@
-"seed","run_folder","pipeline_completed","all_required_files","missing_files","manifest_seed","seed_matches_folder","pipeline_version","min_geo_cells","max_geo_cells","possible_quick_run","model_nodes_md5","model_edges_md5","same_pipeline_version","same_model_nodes","same_model_edges","quality_control_pass"
-101,"resultados_finais_GSDME_seed_101",TRUE,TRUE,"",101,TRUE,"1.2.1",702,2000,FALSE,"d31964ea829ef44585672f75492bf945","9fe139b3d45c9e07c1ad39347b5a5be8",TRUE,TRUE,TRUE,TRUE
-204,"resultados_finais_GSDME_seed_204",TRUE,TRUE,"",204,TRUE,"1.2.1",702,2000,FALSE,"d31964ea829ef44585672f75492bf945","9fe139b3d45c9e07c1ad39347b5a5be8",TRUE,TRUE,TRUE,TRUE
-307,"resultados_finais_GSDME_seed_307",TRUE,TRUE,"",307,TRUE,"1.2.1",702,2000,FALSE,"d31964ea829ef44585672f75492bf945","9fe139b3d45c9e07c1ad39347b5a5be8",TRUE,TRUE,TRUE,TRUE
-509,"resultados_finais_GSDME_seed_509",TRUE,TRUE,"",509,TRUE,"1.2.1",702,2000,FALSE,"d31964ea829ef44585672f75492bf945","9fe139b3d45c9e07c1ad39347b5a5be8",TRUE,TRUE,TRUE,TRUE
-811,"resultados_finais_GSDME_seed_811",TRUE,TRUE,"",811,TRUE,"1.2.1",702,2000,FALSE,"d31964ea829ef44585672f75492bf945","9fe139b3d45c9e07c1ad39347b5a5be8",TRUE,TRUE,TRUE,TRUE
