@@ -5,9 +5,8 @@ epistasis/rescue, and independent TCGA-LIHC expression validation for a
 MALAT1 / miR-204-5p / SIRT1 / p53 / CASP3 / GSDME logical model of
 pyroptotic competence in liver cancer.
 
-> 📄 Companion manuscript: *Single-cell-informed Boolean epistasis predicts
-> upstream control of GSDME-dependent pyroptotic competence in liver cancer*
-> (add DOI/link here once available).
+> 📄 Manuscript: *Single-cell-informed Boolean epistasis predicts
+> upstream control of GSDME-dependent pyroptotic competence in hepatocellular carcinoma (HCC)*.
 
 ---
 
@@ -16,7 +15,7 @@ pyroptotic competence in liver cancer.
 ```
 GSDME-pyroptosis-HCC/
 ├── model/
-│   └── GINsim-miR_204_GSDME_Pyroptosis_Lais6.zginml   # Boolean network (GINsim)
+│   └── GINsim-miR_204_GSDME_Pyroptosis.zginml   # Boolean network (GINsim)
 ├── scripts/
 │   ├── 01_GSDME_systems_oncology_pipeline.R           # per-seed Boolean simulation + GEO validation
 │   ├── 02_GSDME_consensus_across_seeds.R              # combines >=5 completed seed runs
@@ -25,6 +24,11 @@ GSDME-pyroptosis-HCC/
 │   └── RUN_04_TCGA_LIHC_step_by_step.R                 # RStudio "run one block at a time" driver
 ├── results/                # NOT tracked by git (see .gitignore) — outputs live on Drive
 │   ├── seeds/
+|       ├── seed_101/
+|       ├── seed_204/
+|       ├── seed_307/
+|       ├── seed_509/
+|       ├── seed_811/
 │   ├── consensus/
 │   ├── epistasis/
 │   └── tcga_lihc/
@@ -73,24 +77,14 @@ independent of steps 1–2 and of each other.
 > estáveis, simulações assíncronas, consenso e epistasia — usam DDR fixado em
 > 1. DDR não foi medido nos dados single-cell: para HCC, os scripts comparam
 > o RNA observado com as saídas simuladas **nesse contexto fixo**.
->
-> **Nunca misture pastas de sementes de versões diferentes.** Nenhum
-> resultado desta versão deve ser combinado com diretórios de sementes
-> gerados por uma versão anterior do script ou do modelo. Apague, renomeie ou
-> mova as pastas antigas antes de calcular um novo consenso — o script de
-> consenso recusa juntar rodadas com versões de pipeline ou de modelo
-> diferentes.
 
 O bloco abaixo assume que você está numa pasta de trabalho com todos os
-arquivos `.R` e o `.zginml` juntos (por exemplo, copie o conteúdo de
-`scripts/` e `model/` para essa pasta, ou ajuste os caminhos para
-`scripts/01_...`, `scripts/02_...` etc. se preferir rodar direto do
-repositório clonado).
+arquivos `.R` e o `.zginml` juntos.
 
 ```r
-setwd("/home/usuario/Downloads/GSDME_switch_DDR_ON")
+setwd("/home/usuario/Downloads/GSDME-Pyroptosis-Dynamics")
 rscript <- file.path(R.home("bin"), "Rscript")
-model_path <- "GINsim-miR_204_GSDME_Pyroptosis_Lais(6).zginml"
+model_path <- "GINsim-miR_204_GSDME_Pyroptosis.zginml"
 stopifnot(file.exists(model_path))
 
 run_seed <- function(seed) {
@@ -157,44 +151,6 @@ outro fluxo, aberto no RStudio bloco por bloco — veja
 Todas são salvas em PNG e PDF dentro da pasta `figures` correspondente a
 cada `--out`.
 
-### Ordem recomendada das figuras no artigo
-
-1. Cobertura de RNA HCC, componentes prioritários e concordância
-   **observacional** da rede sem perturbação (figuras 04, 06b e 01b do
-   consenso / TCGA).
-2. `Figure_02c_GSDME_dependency_five_phenotypes_consensus`:
-   **perturbation-based validation in silico**; sempre DDR ON.
-3. `Figure_03a_stable_states_and_convergence_DDR_ON`: número **exato** de
-   pontos fixos e frequência **estimada** de chegada a cada saída nas
-   trajetórias das cinco sementes. Essas duas métricas são diferentes.
-4. `Figure_03b_feedback_loop_outcomes_DDR_ON`: eixo miR-204-5p/SIRT1/p53 e
-   p53/MALAT1, BAX, CASP3, GSDME e saídas de morte.
-5. Epistasia e mudança entre saídas apoptótica/piroptótica (figuras 08–11 da
-   pasta de epistasia). Os outputs podem coexistir.
-
-### E1 vs KO
-
-`E1` significa **nó Booleano fixado em 1** (superexpressão simulada); `KO`
-significa **nó Booleano fixado em 0**. O código mantém chaves `OE` antigas
-internamente para preservar compatibilidade com o pipeline principal, mas as
-novas figuras mostram `E1`. Os contrastes incluem:
-
-- GSDME KO + CASP3 E1, GSDME E1 + CASP3 E1;
-- miR-204-5p E1 + GSDME KO;
-- p53 E1 + miR-204-5p E1 + CASP3 KO + p21 E1;
-- MALAT1 E1 + miR-204-5p KO + SIRT1 E1;
-- SIRT1 KO + GSDME KO + CASP3 E1;
-- BAX E1, BAX E1 + GSDME KO e controles isolados.
-
-### Editando o modelo
-
-Para mudar a lógica, edite o `.zginml` e indique o novo caminho em
-`model_path`. Os scripts usam os atributos `name` do modelo e recalculam as
-saídas se os nomes dos nós continuarem presentes. Se renomear ou remover nós
-prioritários, ajuste seus nomes nas intervenções. **Reexecute as cinco
-sementes antes do consenso**: ele impede combinar versões de rede ou de
-pipeline diferentes.
-
 ---
 
 ## Interpretation guardrails (read before citing a number)
@@ -223,38 +179,8 @@ pipeline diferentes.
 
 ---
 
-## Where results live
-
-Code and model are the source of truth in **git**. Generated tables/figures
-(and any cached GDC/GEO downloads) are large, fully reproducible, and
-sometimes bulky binary data — they belong in **Drive**, not in the repo:
-
-```
-Drive:/GSDME-pyroptosis-HCC-results/
-├── seeds/            (mirrors results/seeds     — one dated subfolder per full run)
-├── consensus/        (mirrors results/consensus)
-├── epistasis/        (mirrors results/epistasis)
-└── tcga_lihc/         (mirrors results/tcga_lihc, cache/ included)
-```
-
-Never merge an old seed run folder with a new one in the same consensus
-directory (see the step-by-step above); when re-running with a changed model
-or pipeline version, start a **new dated Drive subfolder** instead of
-overwriting the previous one.
-
----
-
-## Citation
-
-If you use this model or these scripts, please cite:
-
-> \<Author list\>. *Single-cell-informed Boolean epistasis predicts upstream
-> control of GSDME-dependent pyroptotic competence in liver cancer.*
-> \<Journal, year, DOI\>.
-
 ## License
 
 Code is released under the [MIT License](LICENSE). The GINsim model file
 (`model/*.zginml`) is provided for reproducibility of the companion
-manuscript; if you want a separate data/model license (e.g. CC-BY-4.0), add
-it explicitly here.
+manuscript;
