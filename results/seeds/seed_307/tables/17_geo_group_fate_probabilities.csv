@@ -1,0 +1,103 @@
+"accession","experiment","validation_group","validation_scope","fate","mean_probability","n_cells"
+"GSE125449","GSE125449_Set1","S10_P05_LCP23","tumour-cell-intrinsic observational concordance","Pyroptosis",0.036231884057971,46
+"GSE125449","GSE125449_Set1","S10_P05_LCP23","tumour-cell-intrinsic observational concordance","Apoptosis",0,46
+"GSE125449","GSE125449_Set1","S10_P05_LCP23","tumour-cell-intrinsic observational concordance","Resistance",0.949275362318841,46
+"GSE125449","GSE125449_Set1","S10_P05_LCP23","tumour-cell-intrinsic observational concordance","Proliferation",0,46
+"GSE125449","GSE125449_Set1","S10_P05_LCP23","tumour-cell-intrinsic observational concordance","Cell-cycle arrest",0.0144927536231884,46
+"GSE125449","GSE125449_Set1","S10_P05_LCP23","tumour-cell-intrinsic observational concordance","Other",0,46
+"GSE125449","GSE125449_Set1","S12_P07_LCP30","tumour-cell-intrinsic observational concordance","Pyroptosis",0.0266666666666667,25
+"GSE125449","GSE125449_Set1","S12_P07_LCP30","tumour-cell-intrinsic observational concordance","Apoptosis",0,25
+"GSE125449","GSE125449_Set1","S12_P07_LCP30","tumour-cell-intrinsic observational concordance","Resistance",0.933333333333333,25
+"GSE125449","GSE125449_Set1","S12_P07_LCP30","tumour-cell-intrinsic observational concordance","Proliferation",0,25
+"GSE125449","GSE125449_Set1","S12_P07_LCP30","tumour-cell-intrinsic observational concordance","Cell-cycle arrest",0.04,25
+"GSE125449","GSE125449_Set1","S12_P07_LCP30","tumour-cell-intrinsic observational concordance","Other",0,25
+"GSE125449","GSE125449_Set1","S15_P09_LCP38","tumour-cell-intrinsic observational concordance","Pyroptosis",0.033625730994152,228
+"GSE125449","GSE125449_Set1","S15_P09_LCP38","tumour-cell-intrinsic observational concordance","Apoptosis",0,228
+"GSE125449","GSE125449_Set1","S15_P09_LCP38","tumour-cell-intrinsic observational concordance","Resistance",0.931286549707602,228
+"GSE125449","GSE125449_Set1","S15_P09_LCP38","tumour-cell-intrinsic observational concordance","Proliferation",0,228
+"GSE125449","GSE125449_Set1","S15_P09_LCP38","tumour-cell-intrinsic observational concordance","Cell-cycle arrest",0.0350877192982456,228
+"GSE125449","GSE125449_Set1","S15_P09_LCP38","tumour-cell-intrinsic observational concordance","Other",0,228
+"GSE125449","GSE125449_Set1","S21_P13_LCP37","tumour-cell-intrinsic observational concordance","Pyroptosis",0.0444444444444444,60
+"GSE125449","GSE125449_Set1","S21_P13_LCP37","tumour-cell-intrinsic observational concordance","Apoptosis",0,60
+"GSE125449","GSE125449_Set1","S21_P13_LCP37","tumour-cell-intrinsic observational concordance","Resistance",0.905555555555556,60
+"GSE125449","GSE125449_Set1","S21_P13_LCP37","tumour-cell-intrinsic observational concordance","Proliferation",0,60
+"GSE125449","GSE125449_Set1","S21_P13_LCP37","tumour-cell-intrinsic observational concordance","Cell-cycle arrest",0.05,60
+"GSE125449","GSE125449_Set1","S21_P13_LCP37","tumour-cell-intrinsic observational concordance","Other",0,60
+"GSE125449","GSE125449_Set2","S351_P10_LCP34","tumour-cell-intrinsic observational concordance","Pyroptosis",0.0310077519379845,43
+"GSE125449","GSE125449_Set2","S351_P10_LCP34","tumour-cell-intrinsic observational concordance","Apoptosis",0,43
+"GSE125449","GSE125449_Set2","S351_P10_LCP34","tumour-cell-intrinsic observational concordance","Resistance",0.953488372093023,43
+"GSE125449","GSE125449_Set2","S351_P10_LCP34","tumour-cell-intrinsic observational concordance","Proliferation",0,43
+"GSE125449","GSE125449_Set2","S351_P10_LCP34","tumour-cell-intrinsic observational concordance","Cell-cycle arrest",0.0155038759689922,43
+"GSE125449","GSE125449_Set2","S351_P10_LCP34","tumour-cell-intrinsic observational concordance","Other",0,43
+"GSE125449","GSE125449_Set2","S364_P21_LCP65","tumour-cell-intrinsic observational concordance","Pyroptosis",0.0461165048543689,412
+"GSE125449","GSE125449_Set2","S364_P21_LCP65","tumour-cell-intrinsic observational concordance","Apoptosis",0,412
+"GSE125449","GSE125449_Set2","S364_P21_LCP65","tumour-cell-intrinsic observational concordance","Resistance",0.924757281553398,412
+"GSE125449","GSE125449_Set2","S364_P21_LCP65","tumour-cell-intrinsic observational concordance","Proliferation",0,412
+"GSE125449","GSE125449_Set2","S364_P21_LCP65","tumour-cell-intrinsic observational concordance","Cell-cycle arrest",0.029126213592233,412
+"GSE125449","GSE125449_Set2","S364_P21_LCP65","tumour-cell-intrinsic observational concordance","Other",0,412
+"GSE189903","GSE189903_HCC","1HT1","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0471841704718417,219
+"GSE189903","GSE189903_HCC","1HT1","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,219
+"GSE189903","GSE189903_HCC","1HT1","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.908675799086758,219
+"GSE189903","GSE189903_HCC","1HT1","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,219
+"GSE189903","GSE189903_HCC","1HT1","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0441400304414003,219
+"GSE189903","GSE189903_HCC","1HT1","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,219
+"GSE189903","GSE189903_HCC","1HT2","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0472813238770686,141
+"GSE189903","GSE189903_HCC","1HT2","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,141
+"GSE189903","GSE189903_HCC","1HT2","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.914893617021277,141
+"GSE189903","GSE189903_HCC","1HT2","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,141
+"GSE189903","GSE189903_HCC","1HT2","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0378250591016548,141
+"GSE189903","GSE189903_HCC","1HT2","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,141
+"GSE189903","GSE189903_HCC","1HT3","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0640096618357488,276
+"GSE189903","GSE189903_HCC","1HT3","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,276
+"GSE189903","GSE189903_HCC","1HT3","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.902173913043478,276
+"GSE189903","GSE189903_HCC","1HT3","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,276
+"GSE189903","GSE189903_HCC","1HT3","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0338164251207729,276
+"GSE189903","GSE189903_HCC","1HT3","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,276
+"GSE189903","GSE189903_HCC","2HT2","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0416666666666667,24
+"GSE189903","GSE189903_HCC","2HT2","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,24
+"GSE189903","GSE189903_HCC","2HT2","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.930555555555556,24
+"GSE189903","GSE189903_HCC","2HT2","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,24
+"GSE189903","GSE189903_HCC","2HT2","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0277777777777778,24
+"GSE189903","GSE189903_HCC","2HT2","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,24
+"GSE189903","GSE189903_HCC","3HT2","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.115942028985507,23
+"GSE189903","GSE189903_HCC","3HT2","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,23
+"GSE189903","GSE189903_HCC","3HT2","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.855072463768116,23
+"GSE189903","GSE189903_HCC","3HT2","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,23
+"GSE189903","GSE189903_HCC","3HT2","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0289855072463768,23
+"GSE189903","GSE189903_HCC","3HT2","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,23
+"GSE189903","GSE189903_HCC","3HT3","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.072463768115942,23
+"GSE189903","GSE189903_HCC","3HT3","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,23
+"GSE189903","GSE189903_HCC","3HT3","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.884057971014493,23
+"GSE189903","GSE189903_HCC","3HT3","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,23
+"GSE189903","GSE189903_HCC","3HT3","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0434782608695652,23
+"GSE189903","GSE189903_HCC","3HT3","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,23
+"GSE189903","GSE189903_HCC","4HB","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0833333333333333,12
+"GSE189903","GSE189903_HCC","4HB","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,12
+"GSE189903","GSE189903_HCC","4HB","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.916666666666667,12
+"GSE189903","GSE189903_HCC","4HB","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,12
+"GSE189903","GSE189903_HCC","4HB","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0,12
+"GSE189903","GSE189903_HCC","4HB","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,12
+"GSE189903","GSE189903_HCC","4HT1","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0303030303030303,66
+"GSE189903","GSE189903_HCC","4HT1","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,66
+"GSE189903","GSE189903_HCC","4HT1","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.94949494949495,66
+"GSE189903","GSE189903_HCC","4HT1","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,66
+"GSE189903","GSE189903_HCC","4HT1","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0202020202020202,66
+"GSE189903","GSE189903_HCC","4HT1","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,66
+"GSE189903","GSE189903_HCC","4HT3","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0511363636363636,176
+"GSE189903","GSE189903_HCC","4HT3","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,176
+"GSE189903","GSE189903_HCC","4HT3","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.922348484848485,176
+"GSE189903","GSE189903_HCC","4HT3","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,176
+"GSE189903","GSE189903_HCC","4HT3","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0265151515151515,176
+"GSE189903","GSE189903_HCC","4HT3","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,176
+"GSE189903","GSE189903_HCC","4HT2","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0631808278867102,153
+"GSE189903","GSE189903_HCC","4HT2","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,153
+"GSE189903","GSE189903_HCC","4HT2","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.904139433551198,153
+"GSE189903","GSE189903_HCC","4HT2","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,153
+"GSE189903","GSE189903_HCC","4HT2","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0326797385620915,153
+"GSE189903","GSE189903_HCC","4HT2","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,153
+"GSE189903","GSE189903_HCC","2HT3","HCC tumour-region observational concordance; malignant status annotated separately","Pyroptosis",0.0634920634920635,21
+"GSE189903","GSE189903_HCC","2HT3","HCC tumour-region observational concordance; malignant status annotated separately","Apoptosis",0,21
+"GSE189903","GSE189903_HCC","2HT3","HCC tumour-region observational concordance; malignant status annotated separately","Resistance",0.920634920634921,21
+"GSE189903","GSE189903_HCC","2HT3","HCC tumour-region observational concordance; malignant status annotated separately","Proliferation",0,21
+"GSE189903","GSE189903_HCC","2HT3","HCC tumour-region observational concordance; malignant status annotated separately","Cell-cycle arrest",0.0158730158730159,21
+"GSE189903","GSE189903_HCC","2HT3","HCC tumour-region observational concordance; malignant status annotated separately","Other",0,21
