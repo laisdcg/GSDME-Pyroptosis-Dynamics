@@ -1,0 +1,11 @@
+TCGA-LIHC expression support; not causal validation of Boolean rules.
+Module version: 1.0
+Model MD5: 369dea6855a55f5195581954c643b2bc
+GDC retrieval UTC: 2026-09-25 19:51:07
+Simulations, DDR input, seeds, consensus and epistasis have not been modified.
+No expression threshold is interpreted as Boolean activation.
+No survival, protein cleavage, cell death or tumor purity measurements are inferred.
+Mature miRNA: MIMAT0000265, sum of non-cross-mapped isomiR RPM from miRBase21 files.
+Absent qualifying isomiRs in a valid file are recorded as not detected (zero reads), not biological absence.
+Normal samples are adjacent non-tumor tissue from HCC participants, not healthy controls.
+See selection audit for histology filters, additional diagnoses and duplicate exclusions.
