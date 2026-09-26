@@ -1,0 +1,2 @@
+"script_version","model","model_md5","seeds","trajectories_per_condition_and_stratum","max_steps","jitter_probability","quick_mode","geo_enabled","geo_max_cells_per_set","geo_cell_draws","geo_claim_scope","timestamp_utc"
+"1.3.0","/home/usuario/Downloads/GSDME_switch_DDR_ON/GINsim-miR_204_GSDME_Pyroptosis_Lais(6).zginml","369dea6855a55f5195581954c643b2bc","101,204,307,509,811",500,350,0.08,FALSE,TRUE,2000,1,"Observational malignant-cell initial states; not perturbational validation","2026-09-25 04:43:09 UTC"

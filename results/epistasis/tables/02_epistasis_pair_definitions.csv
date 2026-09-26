@@ -1,0 +1,8 @@
+"pair_id","upstream","downstream","double","expected_interpretation"
+"MALAT1_to_miR204","MALAT1_OFF","miR204_OFF","MALAT1_OFF__miR204_OFF","miR-204-5p inhibition rescues MALAT1 inhibition"
+"miR204_to_SIRT1","miR204_ON","SIRT1_ON","miR204_ON__SIRT1_ON","SIRT1 activation rescues miR-204-5p activation"
+"SIRT1_to_p53","SIRT1_OFF","p53_OFF","SIRT1_OFF__p53_OFF","Active p53 inhibition blocks SIRT1 inhibition"
+"p53_to_CASP3","p53_ON","CASP3_OFF","p53_ON__CASP3_OFF","CASP3 inhibition blocks active p53 activation"
+"CASP3_to_GSDME","CASP3_ON","GSDME_OFF","CASP3_ON__GSDME_OFF","GSDME loss blocks CASP3-driven pyroptosis"
+"MALAT1_to_GSDME_gate","MALAT1_OFF","GSDME_OFF","MALAT1_OFF__GSDME_OFF","GSDME loss changes the terminal fate after MALAT1 inhibition"
+"miR204_to_GSDME_gate","miR204_ON","GSDME_OFF","miR204_ON__GSDME_OFF","GSDME loss changes the terminal fate after miR-204-5p activation"

@@ -1,0 +1,51 @@
+"seed","initialisation","gate_test","gsdme_on_condition","gsdme_off_condition","pyroptosis_with_GSDME","pyroptosis_without_GSDME","pyroptosis_drop","apoptosis_with_GSDME","apoptosis_without_GSDME","apoptosis_gain","resistance_with_GSDME","resistance_without_GSDME","resistance_gain"
+101,"Global random","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.076,0,0.076,0,0.086,0.086,0.866,0.848,-0.018
+101,"Global random","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.928,0,0.928,0,0.932,0.932,0,0,0
+101,"Global random","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+101,"Global random","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.474,0,0.474,0,0.528,0.528,0,0,0
+101,"Global random","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.05,0,0.05,0,0.074,0.074,0.938,0.918,-0.0199999999999999
+101,"Resistant-local","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.008,0,0.008,0,0.008,0.008,0.984,0.984,0
+101,"Resistant-local","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.968,0,0.968,0,0.968,0.968,0,0,0
+101,"Resistant-local","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+101,"Resistant-local","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.56,0,0.56,0,0.552,0.552,0,0,0
+101,"Resistant-local","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.006,0,0.006,0,0.006,0.006,0.992,0.994,0.002
+204,"Global random","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.07,0,0.07,0,0.084,0.084,0.848,0.83,-0.018
+204,"Global random","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.926,0,0.926,0,0.892,0.892,0,0,0
+204,"Global random","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+204,"Global random","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.506,0,0.506,0,0.494,0.494,0,0,0
+204,"Global random","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.082,0,0.082,0,0.098,0.098,0.906,0.892,-0.014
+204,"Resistant-local","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.004,0,0.004,0,0.012,0.012,0.982,0.978,-0.004
+204,"Resistant-local","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.958,0,0.958,0,0.96,0.96,0,0,0
+204,"Resistant-local","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+204,"Resistant-local","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.558,0,0.558,0,0.546,0.546,0,0,0
+204,"Resistant-local","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.006,0,0.006,0,0.004,0.004,0.994,0.996,0.002
+307,"Global random","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.072,0,0.072,0,0.086,0.086,0.86,0.86,0
+307,"Global random","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.926,0,0.926,0,0.926,0.926,0,0,0
+307,"Global random","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+307,"Global random","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.474,0,0.474,0,0.51,0.51,0,0,0
+307,"Global random","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.072,0,0.072,0,0.066,0.066,0.922,0.926,0.004
+307,"Resistant-local","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.014,0,0.014,0,0.014,0.014,0.976,0.976,0
+307,"Resistant-local","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.968,0,0.968,0,0.976,0.976,0,0,0
+307,"Resistant-local","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+307,"Resistant-local","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.508,0,0.508,0,0.522,0.522,0,0,0
+307,"Resistant-local","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.002,0,0.002,0,0.002,0.002,0.998,0.998,0
+509,"Global random","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.088,0,0.088,0,0.082,0.082,0.854,0.854,0
+509,"Global random","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.918,0,0.918,0,0.912,0.912,0,0,0
+509,"Global random","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+509,"Global random","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.512,0,0.512,0,0.538,0.538,0,0,0
+509,"Global random","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.08,0,0.08,0,0.08,0.08,0.914,0.916,0.002
+509,"Resistant-local","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.014,0,0.014,0,0.012,0.012,0.968,0.97,0.002
+509,"Resistant-local","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.986,0,0.986,0,0.968,0.968,0,0,0
+509,"Resistant-local","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+509,"Resistant-local","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.464,0,0.464,0,0.446,0.446,0,0,0
+509,"Resistant-local","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.01,0,0.01,0,0.014,0.014,0.99,0.986,-0.004
+811,"Global random","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.076,0,0.076,0,0.082,0.082,0.846,0.842,-0.004
+811,"Global random","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.912,0,0.912,0,0.898,0.898,0,0,0
+811,"Global random","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+811,"Global random","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.512,0,0.512,0,0.5,0.5,0,0,0
+811,"Global random","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.084,0,0.084,0,0.09,0.09,0.91,0.902,-0.00800000000000001
+811,"Resistant-local","MALAT1 inhibition","MALAT1_OFF","MALAT1_OFF__GSDME_OFF",0.012,0,0.012,0,0.012,0.012,0.984,0.982,-0.002
+811,"Resistant-local","SIRT1 inhibition","SIRT1_OFF","SIRT1_OFF__GSDME_OFF",0.952,0,0.952,0,0.966,0.966,0,0,0
+811,"Resistant-local","CASP3 activation","CASP3_ON","CASP3_ON__GSDME_OFF",1,0,1,0,1,1,0,0,0
+811,"Resistant-local","miR-204-5p activation","miR204_ON","miR204_ON__GSDME_OFF",0.482,0,0.482,0,0.496,0.496,0,0,0
+811,"Resistant-local","BAX activation","BAX_ON","BAX_ON__GSDME_OFF",0.004,0,0.004,0,0.004,0.004,0.996,0.996,0
