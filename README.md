@@ -33,7 +33,9 @@ GSDME-pyroptosis-HCC/
 │   ├── epistasis/
 │   └── tcga_lihc/
 ├── LICENSE
-├── .gitignore
+├── GEO_scRNA_datasets
+|   ├── GSE189903/
+|   ├── GSE125449/
 └── README.md
 ```
 
