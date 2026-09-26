@@ -1,0 +1,37 @@
+"model_id","model_name","name_source","assay_symbol","alias_applied","status","component_of_model_id","component_of_label","feature","measurable","display","panel","available"
+"DDR","DDR","id_fallback_missing_name","DDR",FALSE,"not_directly_measurable_conceptual_state",,,"DDR",FALSE,"DDR","DDR",FALSE
+"ATM","ATM","id_fallback_missing_name","ATM",FALSE,"RNAseq_candidate",,,"ATM",TRUE,"ATM","ATM",TRUE
+"AMPK","PRKAA1","name","PRKAA1",FALSE,"RNAseq_candidate",,,"PRKAA1",TRUE,"PRKAA1","PRKAA1",TRUE
+"Wip1","PPM1D","name","PPM1D",FALSE,"RNAseq_candidate",,,"PPM1D",TRUE,"PPM1D","PPM1D",TRUE
+"Mdm2","Mdm2","id_fallback_missing_name","MDM2",FALSE,"RNAseq_candidate",,,"MDM2",TRUE,"MDM2","MDM2",TRUE
+"p53","TP53","name","TP53",FALSE,"RNAseq_candidate",,,"TP53",TRUE,"p53 (TP53)","p53 (TP53)",TRUE
+"p53_A","p53-Arrest","name","P53-ARREST",FALSE,"not_directly_measurable_conceptual_state",,,"P53-ARREST",FALSE,"p53-Arrest","p53-Arrest",FALSE
+"p53INP1","TP53INP1","name","TP53INP1",FALSE,"RNAseq_candidate",,,"TP53INP1",TRUE,"TP53INP1","TP53INP1",TRUE
+"p53_K","p53-Killer","name","P53-KILLER",FALSE,"not_directly_measurable_conceptual_state",,,"P53-KILLER",FALSE,"p53-Killer","p53-Killer",FALSE
+"p21","CDKN1A","name","CDKN1A",FALSE,"RNAseq_candidate",,,"CDKN1A",TRUE,"CDKN1A","CDKN1A",TRUE
+"MYC","MYC","id_fallback_missing_name","MYC",FALSE,"RNAseq_candidate",,,"MYC",TRUE,"MYC","MYC",TRUE
+"lncRNA_MALAT1","MALAT1","name","MALAT1",FALSE,"RNAseq_candidate",,,"MALAT1",TRUE,"MALAT1","MALAT1",TRUE
+"miR_204_5p","MIR204","name","MIR204",FALSE,"mature_miRNA_assay",,,"miR-204-5p",TRUE,"miR-204-5p","miR-204-5p",TRUE
+"SIRT1","SIRT1","id_fallback_missing_name","SIRT1",FALSE,"RNAseq_candidate",,,"SIRT1",TRUE,"SIRT1","SIRT1",TRUE
+"GSDME","DFNA5","name","GSDME",TRUE,"RNAseq_candidate",,,"GSDME",TRUE,"GSDME","GSDME",TRUE
+"E2F1","E2F1","id_fallback_missing_name","E2F1",FALSE,"RNAseq_candidate",,,"E2F1",TRUE,"E2F1","E2F1",TRUE
+"AKT1","AKT1","id_fallback_missing_name","AKT1",FALSE,"RNAseq_candidate",,,"AKT1",TRUE,"AKT1","AKT1",TRUE
+"CDK4_6_CyclinD","(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)","name","(CCND1 OU CCND2 OU CCND3) E (CDK4 OU CDK6)",FALSE,"not_directly_measurable_boolean_complex",,,"(CCND1 OU CCND2 OU CCND3) E (CDK4 OU CDK6)",FALSE,"(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)","(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)",FALSE
+"RB1","RB1","id_fallback_missing_name","RB1",FALSE,"RNAseq_candidate",,,"RB1",TRUE,"RB1","RB1",TRUE
+"CDC25A","CDC25A","name","CDC25A",FALSE,"RNAseq_candidate",,,"CDC25A",TRUE,"CDC25A","CDC25A",TRUE
+"PUMA","BBC3","name","BBC3",FALSE,"RNAseq_candidate",,,"BBC3",TRUE,"BBC3","BBC3",TRUE
+"BCL2","BCL2","id_fallback_missing_name","BCL2",FALSE,"RNAseq_candidate",,,"BCL2",TRUE,"BCL2","BCL2",TRUE
+"BAX","BAX","id_fallback_missing_name","BAX",FALSE,"RNAseq_candidate",,,"BAX",TRUE,"BAX","BAX",TRUE
+"CASP3","CASP3","name","CASP3",FALSE,"RNAseq_candidate",,,"CASP3",TRUE,"CASP3","CASP3",TRUE
+"PROLIFERATION","PROLIFERATION","id_fallback_missing_name","PROLIFERATION",FALSE,"not_directly_measurable_conceptual_state",,,"PROLIFERATION",FALSE,"PROLIFERATION","PROLIFERATION",FALSE
+"RESISTANCE","RESISTANCE","id_fallback_missing_name","RESISTANCE",FALSE,"not_directly_measurable_conceptual_state",,,"RESISTANCE",FALSE,"RESISTANCE","RESISTANCE",FALSE
+"PYROPTOSIS","PYROPTOSIS","id_fallback_missing_name","PYROPTOSIS",FALSE,"not_directly_measurable_conceptual_state",,,"PYROPTOSIS",FALSE,"PYROPTOSIS","PYROPTOSIS",FALSE
+"APOPTOSIS","APOPTOSIS","id_fallback_missing_name","APOPTOSIS",FALSE,"not_directly_measurable_conceptual_state",,,"APOPTOSIS",FALSE,"APOPTOSIS","APOPTOSIS",FALSE
+"CELL_CYCLE_ARREST","CELL_CYCLE_ARREST","id_fallback_missing_name","CELL_CYCLE_ARREST",FALSE,"not_directly_measurable_conceptual_state",,,"CELL_CYCLE_ARREST",FALSE,"CELL_CYCLE_ARREST","CELL_CYCLE_ARREST",FALSE
+"MOMP","MOMP","id_fallback_missing_name","MOMP",FALSE,"not_directly_measurable_conceptual_state",,,"MOMP",FALSE,"MOMP","MOMP",FALSE
+"CASP9","CASP9","id_fallback_missing_name","CASP9",FALSE,"RNAseq_candidate",,,"CASP9",TRUE,"CASP9","CASP9",TRUE
+"CDK4_6_CyclinD::CCND1","CCND1","complex_component","CCND1",FALSE,"RNAseq_candidate","CDK4_6_CyclinD","(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)","CCND1",TRUE,"CCND1","CCND1",TRUE
+"CDK4_6_CyclinD::CCND2","CCND2","complex_component","CCND2",FALSE,"RNAseq_candidate","CDK4_6_CyclinD","(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)","CCND2",TRUE,"CCND2","CCND2",TRUE
+"CDK4_6_CyclinD::CCND3","CCND3","complex_component","CCND3",FALSE,"RNAseq_candidate","CDK4_6_CyclinD","(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)","CCND3",TRUE,"CCND3","CCND3",TRUE
+"CDK4_6_CyclinD::CDK4","CDK4","complex_component","CDK4",FALSE,"RNAseq_candidate","CDK4_6_CyclinD","(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)","CDK4",TRUE,"CDK4","CDK4",TRUE
+"CDK4_6_CyclinD::CDK6","CDK6","complex_component","CDK6",FALSE,"RNAseq_candidate","CDK4_6_CyclinD","(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)","CDK6",TRUE,"CDK6","CDK6",TRUE
