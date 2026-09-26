@@ -18,11 +18,11 @@ GSDME-pyroptosis-HCC/
 │   └── GINsim-miR_204_GSDME_Pyroptosis.zginml   # Boolean network (GINsim)
 ├── scripts/
 │   ├── 01_GSDME_systems_oncology_pipeline.R           # per-seed Boolean simulation + GEO validation
-│   ├── 02_GSDME_consensus_across_seeds.R              # combines >=5 completed seed runs
+│   ├── 02_GSDME_consensus_across_seeds.R              # combines =5 completed seed runs
 │   ├── 03_GSDME_in_silico_epistasis.R                 # matched single/double perturbations + rescue
 │   ├── 04_GSDME_TCGA_LIHC.R                            # independent TCGA-LIHC expression module
 │   └── RUN_04_TCGA_LIHC_step_by_step.R                 # RStudio "run one block at a time" driver
-├── results/                # NOT tracked by git (see .gitignore) — outputs live on Drive
+├── results/                
 │   ├── seeds/
 |       ├── seed_101/
 |       ├── seed_204/
