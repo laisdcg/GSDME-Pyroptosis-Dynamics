@@ -1,0 +1,53 @@
+"accession","perturbation","mean_concordance","mean_weighted_concordance","mean_node_coverage","validation_role","causal_confirmation"
+"GSE125449","BAX E1",0.547495978250209,0.533786205003068,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","BAX E1",0.576223490102382,0.574941594797051,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","BAX E1 + GSDME KO",0.532035451934419,0.518108950579637,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","BAX E1 + GSDME KO",0.560972293930133,0.55466861357921,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","BCL2 KO",0.5623246223898,0.558036740562388,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","BCL2 KO",0.577105795637385,0.564421805318667,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","CASP3 KO",0.575298740436246,0.564046736235162,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","CASP3 KO",0.589486178412505,0.576424458203265,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","CASP3 OE",0.563799634692209,0.555057415869694,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","CASP3 OE",0.578272063579969,0.567651730930538,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","CASP3 OE + GSDME KO",0.552551798309276,0.542600981683949,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","CASP3 OE + GSDME KO",0.567147661666094,0.554349245811104,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","GSDME E1 + CASP3 E1",0.538078114098749,0.531258389091356,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","GSDME E1 + CASP3 E1",0.552883732359938,0.543154258521587,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","GSDME KO",0.571022424646772,0.561337548558576,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","GSDME KO",0.585269671235472,0.573641988794271,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","GSDME OE",0.551674605326819,0.544628068236799,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","GSDME OE",0.566340670158981,0.557294215137302,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","MALAT1 E1 + miR-204-5p KO + SIRT1 E1",0.498673876403641,0.509395444902943,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","MALAT1 E1 + miR-204-5p KO + SIRT1 E1",0.514283466271453,0.533697955900309,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","MALAT1 KO",0.560720204332515,0.524419488272532,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","MALAT1 KO",0.565951462271007,0.514800712233472,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","MALAT1 KO + GSDME KO",0.579590218979947,0.535830360811878,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","MALAT1 KO + GSDME KO",0.585128832303497,0.527599427990149,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","MALAT1 OE",0.498673876403641,0.526875399635965,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","MALAT1 OE",0.514283466271453,0.554493089689561,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","miR-204-5p KO",0.498673876403641,0.486992146066767,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","miR-204-5p KO",0.514283466271453,0.504686980755874,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","miR-204-5p OE",0.615826243010143,0.600027944687709,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","miR-204-5p OE",0.617464462186386,0.595441444872084,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","miR-204-5p OE + CASP3 KO",0.546839215799016,0.546716366171824,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","miR-204-5p OE + CASP3 KO",0.549641495679209,0.545981481378344,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","miR-204-5p OE + GSDME KO",0.601030595066301,0.579270760937847,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","miR-204-5p OE + GSDME KO",0.605183395880265,0.576881995070921,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","p21 E1",0.555488143496907,0.533654248420438,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","p21 E1",0.565517377286338,0.536737303161231,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","p53 E1",0.735947495313739,0.694913148302654,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","p53 E1",0.748843816621285,0.711987233946017,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","p53 E1 + miR-204-5p E1 + CASP3 KO + p21 E1",0.526710178115303,0.514081523551881,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","p53 E1 + miR-204-5p E1 + CASP3 KO + p21 E1",0.525458788431198,0.510256215937173,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","p53 KO",0.498673876403641,0.498904506594312,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","p53 KO",0.514283466271453,0.518219988004852,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","Reference: DDR ON, GSDME endogenous",0.568355324144186,0.568355324144186,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","Reference: DDR ON, GSDME endogenous",0.582787613819204,0.582787613819204,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","SIRT1 KO",0.520852900154224,0.517226308823055,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","SIRT1 KO",0.525141950107728,0.520769437045514,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","SIRT1 KO + GSDME KO",0.511642373838435,0.508507888574241,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","SIRT1 KO + GSDME KO",0.515931423791938,0.511642194309493,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","SIRT1 KO + GSDME KO + CASP3 E1",0.51032658436475,0.512837014210343,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","SIRT1 KO + GSDME KO + CASP3 E1",0.514496488915609,0.516679269504536,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
+"GSE125449","SIRT1 OE",0.498673876403641,0.498904506594312,0.95,"annotated HCC malignant cells",FALSE
+"GSE189903","SIRT1 OE",0.514283466271453,0.511799385180766,0.95,"HCC tumour-region cells; inspect malignancy annotation",FALSE
