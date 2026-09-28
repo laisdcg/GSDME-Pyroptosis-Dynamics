@@ -127,47 +127,14 @@ status_epistasia <- system2(rscript, args = c(
 stopifnot(status_epistasia == 0L)
 ```
 
-A validação TCGA-LIHC (passo 4) é independente dos passos 1–3 e roda em
-outro fluxo, aberto no RStudio bloco por bloco — veja
-[`scripts/RUN_04_TCGA_LIHC_step_by_step.R`](scripts/RUN_TCGA_LIHC_step_by_step.R).
+The TCGA-LIHC validation (step 4) is independent of steps 1–3 and runs in
+a separate workflow, opened in RStudio block by block — see
+[`scripts/RUN_TCGA_LIHC_step_by_step.R`](scripts/RUN_TCGA_LIHC_step_by_step.R).
 
-### Figuras geradas
+### Generated figures
 
-- O script das sementes (passo 1) gera `Figure_02c_GSDME_dependency_DDR_ON` e
-  `Figure_08c_GSDME_dependency_exact_DDR_ON`.
-- O consenso (passo 2) gera `Figure_02c_GSDME_dependency_five_phenotypes_consensus`
-  e `Figure_02d_GSDME_dependency_contrast_consensus`.
-- A epistasia (passo 3) gera `Figure_10_GSDME_dependency_DDR_ON_five_phenotypes`
-  e, quando existem trajetórias elegíveis, `Figure_11_GSDME_KO_matched_trajectory_fates`.
-
-Todas são salvas em PNG e PDF dentro da pasta `figures` correspondente a
-cada `--out`.
-
----
-
-## Interpretation guardrails (read before citing a number)
-
-- **Seeds are computational replicates, not biological replicates.** Consensus
-  CIs quantify Monte Carlo variability only.
-- **GEO/TCGA support is observational**, never causal validation of a
-  knockout/overexpression — no dataset here received the modeled perturbations
-  experimentally.
-- **DDR is fixed ON** in every simulation and stable-state analysis in this
-  version; it was not measured in the single-cell/TCGA data.
-- No 50/50 apoptosis/pyroptosis split is imposed anywhere: `PYROPTOSIS = GSDME`
-  and `GSDME = CASP3` in the attached model, and with CASP3 E1 and endogenous
-  GSDME the model decides the fate frequencies from its own logic. Forcing
-  `DFNA5 = 1` with `GSDME E1` is a logical control, not a measurement of
-  cleavage.
-- The GEO datasets used did **not** receive these perturbations
-  experimentally. `PPARGC1A` is not part of the supplied model and was not
-  added to the scripts.
-- TCGA figures never plot a model node that has no measurable transcript
-  (e.g. purely conceptual states, or `CDK4_6_CyclinD`, which is expanded into
-  its individual components `CDK4`, `CDK6`, `CCND1`, `CCND2`, `CCND3` instead
-  of being shown as one panel).
-- `--quick` runs are for debugging only and must never be reported or mixed
-  into the consensus.
+All figures are saved in PNG and PDF formats within the `figures` folder corresponding to
+each `--out`.
 
 ---
 
