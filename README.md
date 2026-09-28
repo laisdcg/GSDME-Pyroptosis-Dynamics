@@ -129,7 +129,7 @@ stopifnot(status_epistasia == 0L)
 
 A validação TCGA-LIHC (passo 4) é independente dos passos 1–3 e roda em
 outro fluxo, aberto no RStudio bloco por bloco — veja
-[`scripts/RUN_04_TCGA_LIHC_step_by_step.R`](scripts/RUN_04_TCGA_LIHC_step_by_step.R).
+[`scripts/RUN_04_TCGA_LIHC_step_by_step.R`](scripts/RUN_TCGA_LIHC_step_by_step.R).
 
 ### Figuras geradas
 
