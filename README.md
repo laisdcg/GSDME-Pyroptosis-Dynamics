@@ -5,8 +5,7 @@ epistasis/rescue, and independent TCGA-LIHC expression validation for a
 MALAT1 / miR-204-5p / SIRT1 / p53 / CASP3 / GSDME logical model of
 pyroptotic competence in liver cancer.
 
-> 📄 Manuscript: *Single-cell-informed Boolean epistasis predicts
-> upstream control of GSDME-dependent pyroptotic competence in hepatocellular carcinoma (HCC)*.
+> 📄 Manuscript: *Boolean modeling and transcriptomic integration of the miR-204-5p/MALAT1/SIRT1 axis in the regulation of GSDME-dependent pyroptosis in hepatocellular carcinoma)*.
 
 ---
 
@@ -64,15 +63,15 @@ independent of steps 1–2 and of each other.
 
 ---
 
-## Passo a passo completo (execução no R)
+## Complete step-by-step guide (execution in R)
 
-> **DDR = 1 (ON) em toda esta versão.** Todas as análises do modelo — estados
-> estáveis, simulações assíncronas, consenso e epistasia — usam DDR fixado em
-> 1. DDR não foi medido nos dados single-cell: para HCC, os scripts comparam
-> o RNA observado com as saídas simuladas **nesse contexto fixo**.
+> **DDR = 1 (ON) throughout this version.** All model analyses—steady states, asynchronous simulations,
+> consensus, and epistasis—use a fixed DDR of
+> 1. DDR was not measured in the single-cell data; for HCC, the scripts compare
+> the observed RNA with the simulated outputs. **in this fixed context**.
 
-O bloco abaixo assume que você está numa pasta de trabalho com todos os
-arquivos `.R` e o `.zginml` juntos.
+The block below assumes you are in a working directory with all
+the `.R` files and the `.zginml` file together.
 
 ```r
 setwd("/home/usuario/Downloads/GSDME-Pyroptosis-Dynamics")
@@ -96,7 +95,7 @@ run_seed <- function(seed) {
 }
 ```
 
-Execute cada linha separadamente e confira o retorno `0`:
+Execute each line separately and check for a return value of `0`:
 
 ```r
 status_101 <- run_seed(101)
@@ -106,14 +105,14 @@ status_509 <- run_seed(509)
 status_811 <- run_seed(811)
 ```
 
-Depois, calcule o consenso a partir das cinco pastas geradas:
+Then, calculate the consensus from the five generated folders:
 
 ```r
 status_consenso <- system2(rscript, "GSDME_consensus_across_seeds.R")
 stopifnot(status_consenso == 0L)
 ```
 
-Por fim, rode a epistasia separadamente (independente dos passos 1–2):
+Finally, run the epistasis analysis separately (independently of steps 1–2):
 
 ```r
 status_epistasia <- system2(rscript, args = c(
