@@ -66,8 +66,8 @@ independent of steps 1–2 and of each other.
 ## Complete step-by-step guide (execution in R)
 
 > **DDR = 1 (ON) throughout this version.** All model analyses—steady states, asynchronous simulations,
-> consensus, and epistasis—use a fixed DDR of
-> 1. DDR was not measured in the single-cell data; for HCC, the scripts compare
+> consensus, and epistasis—use a fixed DDR of 1.
+> DDR was not measured in the single-cell data; for HCC, the scripts compare
 > the observed RNA with the simulated outputs. **in this fixed context**.
 
 The block below assumes you are in a working directory with all
