@@ -54,6 +54,7 @@ The main regulatory axis investigated was:
 ```text
 ATM ┤ CDC25A → E2F1 → MYC → MALAT1 ┤ miR-204-5p ┤ SIRT1 ┤ TP53 → CDKN1A ┤ CASP3 → GSDME
 
+```
 ---
 
 ## License
