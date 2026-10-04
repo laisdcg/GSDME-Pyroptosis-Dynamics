@@ -22,7 +22,37 @@ GSDME-pyroptosis-HCC/
 ├── LICENSE
 └── README.md
 ```
+## Overview
 
+This repository contains the computational workflow used to investigate how upstream regulatory mechanisms influence the balance between proliferation, resistance, cell-cycle arrest, apoptosis, and pyroptosis in HCC.
+
+The study integrates:
+
+- a **GINsim Boolean regulatory model**;
+- *in silico* perturbation analysis;
+- three independent GEO cohorts: **GSE14520, GSE60502, and GSE121248**;
+- **TCGA-LIHC** RNA-seq and miRNA-seq data;
+- regulatory-edge evaluation using **Spearman correlation, NMI, and GGC**.
+
+## Boolean model
+
+The final GINsim network contains:
+
+- **31 nodes**
+- **68 regulatory interactions**
+- **5 phenotypic outputs**:
+  - PROLIFERATION
+  - RESISTANCE
+  - CELL-CYCLE ARREST
+  - APOPTOSIS
+  - PYROPTOSIS
+
+DDR was maintained active (`DDR = 1`) during the simulations, representing persistent DNA-damage signaling.
+
+The main regulatory axis investigated was:
+
+```text
+ATM ┤ CDC25A → E2F1 → MYC → MALAT1 ┤ miR-204-5p ┤ SIRT1 ┤ TP53 → CDKN1A ┤ CASP3 → GSDME
 
 ---
 
