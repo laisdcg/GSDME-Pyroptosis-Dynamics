@@ -34,6 +34,27 @@ The study integrates:
 - **TCGA-LIHC** RNA-seq and miRNA-seq data;
 - regulatory-edge evaluation using **Spearman correlation, NMI, and GGC**.
 
+## Requeriments
+
+GEOquery
+Biobase
+XML
+xml2
+httr
+jsonlite
+dplyr
+tidyr
+ggplot2
+patchwork
+igraph
+infotheo
+
+## Data availability
+
+Public datasets:
+- NCBI GEO: GSE14520, GSE60502, GSE121248
+- NCI GDC: TCGA-LIHC
+
 ## Boolean model
 
 The final GINsim network contains:
