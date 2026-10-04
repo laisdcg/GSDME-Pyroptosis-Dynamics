@@ -16,125 +16,13 @@ GSDME-pyroptosis-HCC/
 ├── model/
 │   └── GINsim-miR_204_GSDME_Pyroptosis.zginml   # Boolean network (GINsim)
 ├── scripts/
-│   ├── 01_GSDME_systems_oncology_pipeline.R           # per-seed Boolean simulation + GEO validation
-│   ├── 02_GSDME_consensus_across_seeds.R              # combines =5 completed seed runs
-│   ├── 03_GSDME_in_silico_epistasis.R                 # matched single/double perturbations + rescue
-│   ├── 04_GSDME_TCGA_LIHC.R                            # independent TCGA-LIHC expression module
-│   └── RUN_04_TCGA_LIHC_step_by_step.R                 # RStudio "run one block at a time" driver
+│   ├── bulkrna-seq-gsdme.R          
+│   ├── tcga-lihc-gsdme.R              
 ├── results/                
-│   ├── seeds/
-|       ├── seed_101/
-|       ├── seed_204/
-|       ├── seed_307/
-|       ├── seed_509/
-|       ├── seed_811/
-│   ├── consensus/
-│   ├── epistasis/
-│   └── tcga_lihc/
 ├── LICENSE
 └── README.md
 ```
 
-## Requirements
-
-- R ≥ 4.2
-- Packages: `xml2`, `igraph`, `ggplot2`, `scales`, `patchwork`, `Matrix`,
-  `data.table`, `httr`, `jsonlite`
-  (each script auto-installs what's missing unless run with `--no-install`)
-- Internet access for the Boolean pipeline (`--geo ...` downloads from GEO/NCBI)
-  and for the TCGA module (queries the GDC API)
-- No network needed to re-run `tcga_extract()` / `tcga_analyze()` once GDC
-  files are already cached locally
-
----
-
-## Pipeline order
-
-| # | Script | What it does | Depends on |
-|---|--------|---------------|------------|
-| 1 | `01_GSDME_systems_oncology_pipeline.R` | Loads the `.zginml`, computes reference attractors, screens literature-grounded perturbations, searches minimal driver sets, runs single-cell-informed simulations (demo + GEO), fits patient multi-omic digital twins, trains a Q-learning agent. Run **once per seed**. | model file |
-| 2 | `02_GSDME_consensus_across_seeds.R` | Quality-controls and merges **≥ 5** completed (non-`--quick`) seed folders from step 1 into consensus tables/figures with Monte-Carlo 95% CIs. | ≥ 5 folders from step 1, same pipeline version & model |
-| 3 | `03_GSDME_in_silico_epistasis.R` | Matched single/double Boolean perturbations along the MALAT1→miR-204-5p→SIRT1→p53→CASP3→GSDME axis; rescue fractions, GSDME terminal-gate test, GSE125449-informed epistasis. | model file (independent of steps 1–2) |
-| 4 | `04_GSDME_TCGA_LIHC.R` | Independent, read-only validation: pulls matched tumor/adjacent-normal TCGA-LIHC RNA-seq (STAR counts) + mature miR-204-5p isomiRs from GDC, paired Wilcoxon tests, Spearman correlations, publication figures. Never touches the Boolean simulation. | model file only (does not read steps 1–3 outputs) |
-
-Steps 1→2 must use the **same model file and pipeline version** — the
-consensus script refuses to merge mismatched runs. Step 3 and step 4 are
-independent of steps 1–2 and of each other.
-
----
-
-## Complete step-by-step guide (execution in R)
-
-> **DDR = 1 (ON) throughout this version.** All model analyses—steady states, asynchronous simulations,
-> consensus, and epistasis—use a fixed DDR of 1.
-> DDR was not measured in the single-cell data; for HCC, the scripts compare
-> the observed RNA with the simulated outputs. **in this fixed context**.
-
-The block below assumes you are in a working directory with all
-the `.R` files and the `.zginml` file together.
-
-```r
-setwd("/home/usuario/Downloads/GSDME-Pyroptosis-Dynamics")
-rscript <- file.path(R.home("bin"), "Rscript")
-model_path <- "GINsim-miR_204_GSDME_Pyroptosis.zginml"
-stopifnot(file.exists(model_path))
-
-run_seed <- function(seed) {
-  status <- system2(rscript, args = c(
-    "GSDME_systems_oncology_pipeline.R",
-    "--model", shQuote(model_path),
-    "--geo", "GSE125449,GSE189903",
-    "--geo-platform", "droplet",
-    "--geo-max-cells", "2000",
-    "--geo-dir", "GEO_scRNA_data",
-    "--out", paste0("resultados_finais_GSDME_seed_", seed),
-    "--no-demo", "--seed", as.character(seed)
-  ))
-  if (status != 0L) stop("Falha na semente ", seed, ": status ", status)
-  status
-}
-```
-
-Execute each line separately and check for a return value of `0`:
-
-```r
-status_101 <- run_seed(101)
-status_204 <- run_seed(204)
-status_307 <- run_seed(307)
-status_509 <- run_seed(509)
-status_811 <- run_seed(811)
-```
-
-Then, calculate the consensus from the five generated folders:
-
-```r
-status_consenso <- system2(rscript, "GSDME_consensus_across_seeds.R")
-stopifnot(status_consenso == 0L)
-```
-
-Finally, run the epistasis analysis separately (independently of steps 1–2):
-
-```r
-status_epistasia <- system2(rscript, args = c(
-  "GSDME_in_silico_epistasis.R",
-  "--model", shQuote(model_path),
-  "--seeds", "101,204,307,509,811",
-  "--trajectories", "500",
-  "--geo-dir", "GEO_scRNA_data",
-  "--geo-max-cells", "2000",
-  "--out", "resultados_epistasia_GSDME"
-))
-stopifnot(status_epistasia == 0L)
-```
-
-The TCGA-LIHC validation (step 4) is independent of steps 1–3 and runs in
-a separate workflow, opened in RStudio block by block — see
-[`scripts/RUN_TCGA_LIHC_step_by_step.R`](scripts/RUN_TCGA_LIHC_step_by_step.R).
-
-### Generated figures
-
-All figures are saved in PNG and PDF formats within the `figures` folder corresponding to
-each `--out`.
 
 ---
 
