@@ -35,7 +35,7 @@ The study integrates:
 - regulatory-edge evaluation using **Spearman correlation, NMI, and GGC**.
 
 ## Requeriments
-
+```
 GEOquery
 Biobase
 XML
@@ -48,6 +48,7 @@ ggplot2
 patchwork
 igraph
 infotheo
+```
 
 ## Data availability
 
