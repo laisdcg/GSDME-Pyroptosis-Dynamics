@@ -5,7 +5,7 @@ epistasis/rescue, and independent TCGA-LIHC expression validation for a
 MALAT1 / miR-204-5p / SIRT1 / p53 / CASP3 / GSDME logical model of
 pyroptotic competence in liver cancer.
 
-> 📄 Manuscript: *Boolean modeling and transcriptomic integration of the miR-204-5p/MALAT1/SIRT1 axis in the regulation of GSDME-dependent pyroptosis in hepatocellular carcinoma)*.
+> 📄 Manuscript: *Boolean modeling and transcriptomic integration of the MALAT1/miR-204-5p/SIRT1 axis in the regulation of GSDME-dependent pyroptosis in hepatocellular carcinoma)*.
 
 ---
 
