@@ -1,0 +1,4 @@
+"Dataset","Total_Edges","Represented_Edges","Compatible","Supported","Not_Significant","Incompatible","Not_Represented","Coverage_Percentage"
+"GSE121248",10,10,9,2,7,1,0,100
+"GSE14520",10,8,6,2,4,2,2,80
+"GSE60502",10,8,8,0,8,0,2,80

@@ -1,0 +1,11 @@
+"Edge","Source_Gene","Edge_Symbol","Target_Gene","Interaction_Type","Datasets_Evaluated","Datasets_Represented","Datasets_Supported","Datasets_Compatible","Datasets_Incompatible","Datasets_Not_Represented"
+"ATM -| CDC25A","ATM","-|","CDC25A","Inhibition",3,3,1,2,1,0
+"CASP3 → DFNA5","CASP3","→","DFNA5","Activation",3,3,1,3,0,0
+"CDC25A → E2F1","CDC25A","→","E2F1","Activation",3,3,2,3,0,0
+"CDKN1A -| CASP3","CDKN1A","-|","CASP3","Inhibition",3,3,0,3,0,0
+"E2F1 → MYC","E2F1","→","MYC","Activation",3,3,0,1,2,0
+"MALAT1 -| TRPM3","MALAT1","-|","TRPM3","Inhibition",3,1,0,1,0,2
+"MYC → MALAT1","MYC","→","MALAT1","Activation",3,1,0,1,0,2
+"SIRT1 -| TP53","SIRT1","-|","TP53","Inhibition",3,3,0,3,0,0
+"TP53 → CDKN1A","TP53","→","CDKN1A","Activation",3,3,0,3,0,0
+"TRPM3 -| SIRT1","TRPM3","-|","SIRT1","Inhibition",3,3,0,3,0,0
