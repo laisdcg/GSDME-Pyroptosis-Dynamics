@@ -29,7 +29,7 @@ The study asks which regulatory conditions allow CASP3 activation to end in GSDM
 ```
 GSDME-Pyroptosis-Dynamics/
 ├── model/
-│   ├── GINsim-GSDME_Pyroptosis.zginml        # Boolean model (miR-204-5p node named TRPM3; used for GEO)
+│   ├── GINsim-GSDME_Pyroptosis_GEO.zginml        # Boolean model (miR-204-5p node named TRPM3; used for GEO)
 │   └── GINsim-GSDME_Pyroptosis_TCGA.zginml   # Same model (miR-204-5p node named MIR204; used for TCGA)
 ├── scripts/
 │   ├── bulkrna-seq-gsdme.R      # GEO analyses + Boolean perturbation analysis (BoolNet)
