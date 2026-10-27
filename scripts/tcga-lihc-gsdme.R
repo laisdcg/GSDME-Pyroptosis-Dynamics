@@ -509,16 +509,102 @@ tcga_wide$case_id <- NULL
 # 2. DEFINIÇÃO DA TOPOLOGIA DA VIA COM miR-204
 # ------------------------------------------------------------------------------
 
-arestas_tcga <- data.frame(
-  From = c("ATM", "CDC25A", "E2F1", "MYC", "MALAT1", "miR-204", "SIRT1", "TP53", "CDKN1A", "CASP3"),
-  To   = c("CDC25A", "E2F1", "MYC", "MALAT1", "miR-204", "SIRT1", "TP53", "CDKN1A", "CASP3", "GSDME"),
-  Sign = c(-1, 1, 1, 1, -1, -1, -1, 1, -1, 1),
-  stringsAsFactors = FALSE
-)
+# NOVO (out/2026): além da via principal (Figuras 6B e 8B, inalteradas), o script testa o ramo
+# pró-piroptose do modelo, LIDO DO .zginml DO GINsim:
+#   SIRT1 -| p53 -> p53_K -> PUMA -> BAX -> MOMP -> CASP9 -> CASP3 -> GSDME ; p53_K -> GSDME ; -> PYROPTOSIS
+# O script confere cada ligação no modelo (e usa o sinal dele), troca IDs por NAMES (p53 -> TP53,
+# PUMA -> BBC3, GSDME -> DFNA5, p53_K -> p53-Killer) e atravessa os nós que não são genes
+# (p53-Killer, MOMP), registrando-os em 'Via'. Nos dados do GDC o gene DFNA5 está como GSDME;
+# a busca usa GSDME, e o rótulo da figura mostra o name do modelo (DFNA5).
+# BH por ramo, para que os resultados da via principal não mudem.
 
-arestas_tcga$Aresta <- paste(arestas_tcga$From, 
-                             ifelse(arestas_tcga$Sign == 1, "→", "-|"), 
-                             arestas_tcga$To)
+RAMO_PRINCIPAL <- "Main pathway"
+RAMO_PIROPTOSE <- "Pyroptotic branch"
+NOTA_VIA <- "'via' = model state (not a gene) between the two measured genes; TP53 mRNA used for p53/p53-Killer"
+
+ler_modelo_ginsim <- function(caminho) {
+  caminho <- path.expand(caminho)
+  if (!file.exists(caminho)) stop("Modelo não encontrado: ", caminho)
+  if (grepl("\\.zginml$", caminho, ignore.case = TRUE)) {
+    arqs <- utils::unzip(caminho, list = TRUE)$Name
+    arq  <- arqs[grepl("\\.ginml$", arqs, ignore.case = TRUE)]
+    if (length(arq) != 1) stop("Não encontrei um único arquivo .ginml dentro do .zginml.")
+    con <- unz(caminho, arq); on.exit(close(con), add = TRUE)
+    doc <- xml2::read_xml(paste(readLines(con, warn = FALSE, encoding = "UTF-8"), collapse = "\n"))
+  } else {
+    doc <- xml2::read_xml(caminho)
+  }
+  nos   <- xml2::xml_find_all(doc, ".//node")
+  ids   <- xml2::xml_attr(nos, "id")
+  nomes <- xml2::xml_attr(nos, "name")
+  sem_nome <- is.na(nomes) | !nzchar(trimws(nomes))
+  nomes[sem_nome] <- ids[sem_nome]                       # nós sem name (ex.: MOMP) ficam com o ID
+  ed <- xml2::xml_find_all(doc, ".//edge")
+  list(nos = data.frame(id = ids, name = nomes, stringsAsFactors = FALSE),
+       arestas = data.frame(from = xml2::xml_attr(ed, "from"), to = xml2::xml_attr(ed, "to"),
+                            sinal = ifelse(xml2::xml_attr(ed, "sign") == "negative", -1, 1),
+                            stringsAsFactors = FALSE))
+}
+
+# Ramo pró-morte derivado do modelo -> data.frame From/To (símbolos dos dados), Sign, Via, Aresta (names)
+ramo_piroptose_do_modelo <- function(caminho_modelo) {
+  modelo <- ler_modelo_ginsim(caminho_modelo)
+  ramo_ids <- list(c("SIRT1", "p53"), c("p53", "p53_K"), c("p53_K", "PUMA"), c("PUMA", "BAX"),
+                   c("BAX", "MOMP"), c("MOMP", "CASP9"), c("CASP9", "CASP3"), c("CASP3", "GSDME"),
+                   c("p53_K", "GSDME"), c("CASP3", "PYROPTOSIS"), c("GSDME", "PYROPTOSIS"))
+  ramo <- do.call(rbind, lapply(ramo_ids, function(p) {
+    hit <- modelo$arestas[modelo$arestas$from == p[1] & modelo$arestas$to == p[2], , drop = FALSE]
+    if (!nrow(hit)) stop("A ligação ", p[1], " -> ", p[2], " não existe no modelo .zginml.")
+    hit[1, ]
+  }))
+  nome_de <- setNames(modelo$nos$name, modelo$nos$id)
+  nao_genes <- c("DDR", "p53_A", "p53_K", "MOMP",
+                 "PROLIFERATION", "RESISTANCE", "PYROPTOSIS", "APOPTOSIS", "CELL_CYCLE_ARREST")
+  e_gene <- function(id) !(id %in% nao_genes)
+
+  percorrer <- function(no, sinal, via, origem) {
+    saidas <- ramo[ramo$from == no, , drop = FALSE]
+    out <- list()
+    for (k in seq_len(nrow(saidas))) {
+      v <- saidas$to[k]; s <- sinal * saidas$sinal[k]
+      if (e_gene(v)) {
+        out[[length(out) + 1]] <- data.frame(from_id = origem, to_id = v, sinal = s,
+                                             via = paste(nome_de[via], collapse = " → "),
+                                             stringsAsFactors = FALSE)
+      } else if (v %in% ramo$from) {
+        out[[length(out) + 1]] <- percorrer(v, s, c(via, v), origem)
+      }
+    }
+    if (length(out)) do.call(rbind, out) else NULL
+  }
+  origens <- unique(ramo$from[e_gene(ramo$from)])
+  t <- do.call(rbind, lapply(origens, function(u) percorrer(u, 1, character(0), u)))
+
+  nome_from <- unname(nome_de[t$from_id]); nome_to <- unname(nome_de[t$to_id])
+  simbolo_dados <- function(x) ifelse(toupper(x) == "DFNA5", "GSDME", x)   # anotação do GDC
+  out <- data.frame(From = simbolo_dados(nome_from), To = simbolo_dados(nome_to), Sign = t$sinal,
+                    Via = t$via, Branch = RAMO_PIROPTOSE, stringsAsFactors = FALSE)
+  out$Aresta <- paste0(nome_from, " ", ifelse(out$Sign == 1, "→", "-|"), " ", nome_to,
+                       ifelse(out$Via == "", "", paste0(" (via ", out$Via, ")")))
+  cat("\n[Modelo] Ramo pró-piroptose lido de", basename(caminho_modelo), ":\n")
+  cat(paste0("  ", out$Aresta, collapse = "\n"), "\n")
+  out
+}
+
+definir_arestas_tcga <- function() {
+  principal <- data.frame(
+    From = c("ATM", "CDC25A", "E2F1", "MYC", "MALAT1", "miR-204", "SIRT1", "TP53", "CDKN1A", "CASP3"),
+    To   = c("CDC25A", "E2F1", "MYC", "MALAT1", "miR-204", "SIRT1", "TP53", "CDKN1A", "CASP3", "GSDME"),
+    Sign = c(-1, 1, 1, 1, -1, -1, -1, 1, -1, 1),
+    Via  = "", Branch = RAMO_PRINCIPAL, stringsAsFactors = FALSE
+  )
+  principal$Aresta <- paste(principal$From, ifelse(principal$Sign == 1, "→", "-|"), principal$To)
+  caminho_modelo <- if (exists("cfg") && !is.null(cfg$model)) cfg$model else file.choose()
+  rbind(principal, ramo_piroptose_do_modelo(caminho_modelo))
+}
+
+arestas_tcga <- definir_arestas_tcga()
+arestas_tcga_def <- arestas_tcga   # guardada para a seção de Spearman (evita ler o modelo de novo)
 
 # ------------------------------------------------------------------------------
 # 3. CÁLCULO DE MUTUAL INFORMATION, NMI E GGC
@@ -550,8 +636,9 @@ testar_dependencia <- function(x, y, n_perm = 2000, seed = 123, min_n = 10) {
 
 res_nmi_ggc <- lapply(seq_len(nrow(arestas_tcga)), function(i) {
   from_gene <- arestas_tcga$From[i]; to_gene <- arestas_tcga$To[i]
-  base <- data.frame(Dataset = "TCGA-LIHC", Aresta = arestas_tcga$Aresta[i], From = from_gene,
-                     To = to_gene, Sign = arestas_tcga$Sign[i], stringsAsFactors = FALSE)
+  base <- data.frame(Dataset = "TCGA-LIHC", Branch = arestas_tcga$Branch[i], Aresta = arestas_tcga$Aresta[i],
+                     From = from_gene, To = to_gene, Via = arestas_tcga$Via[i],
+                     Sign = arestas_tcga$Sign[i], stringsAsFactors = FALSE)
   if (!from_gene %in% colnames(tcga_wide) || !to_gene %in% colnames(tcga_wide)) {
     return(cbind(base, t(testar_dependencia(numeric(0), numeric(0)))))
   }
@@ -559,7 +646,12 @@ res_nmi_ggc <- lapply(seq_len(nrow(arestas_tcga)), function(i) {
 })
 
 tab_nmi_ggc <- do.call(rbind, res_nmi_ggc)
-tab_nmi_ggc$p_adj_perm <- p.adjust(tab_nmi_ggc$p_perm, method = "BH")
+# BH por ramo (a via principal continua com a mesma correção de antes, sobre as suas 10 arestas)
+tab_nmi_ggc$p_adj_perm <- NA_real_
+for (rm in unique(tab_nmi_ggc$Branch)) {
+  ix <- tab_nmi_ggc$Branch == rm
+  tab_nmi_ggc$p_adj_perm[ix] <- p.adjust(tab_nmi_ggc$p_perm[ix], method = "BH")
+}
 tab_nmi_ggc$Status <- ifelse(is.na(tab_nmi_ggc$GGC), "MISSING_ELEMENT",
                              ifelse(tab_nmi_ggc$p_adj_perm < 0.05, "SIGNIFICANT DEPENDENCE", "NOT SIGNIFICANT"))
 tab_nmi_ggc$GGC_ge_0.30 <- tab_nmi_ggc$GGC >= 0.30   # só para comparação com a versão anterior
@@ -576,12 +668,23 @@ write.csv(tab_nmi_ggc, file.path(cfg$out, "tables", "11_validacao_nmi_ggc_tcga.c
 # 4. GERAÇÃO DA FIGURA EM INGLÊS (ESTILO GEO 3 DATASETS)
 # ------------------------------------------------------------------------------
 
+# Uma figura por ramo: a da via principal mantém o nome original (Figura 8B do manuscrito);
+# a do ramo pró-piroptose é a Figura 9B.
+figuras_nmi_tcga <- list(
+  list(branch = RAMO_PRINCIPAL, titulo = "Information-Theoretic Pathway Validation in TCGA Cohort",
+       arquivo = "Fig_Pathway_Validation_DDR_GSDME_TCGA_EN.png"),
+  list(branch = RAMO_PIROPTOSE, titulo = "Information-Theoretic Validation of the Pyroptotic Branch in TCGA Cohort",
+       arquivo = "Fig_Pyroptotic_Branch_Validation_TCGA_EN.png")
+)
+
+for (fg in figuras_nmi_tcga) {
+
 df_plot_tcga <- tab_nmi_ggc %>%
-  filter(!is.na(GGC)) %>%
+  filter(Branch == fg$branch, !is.na(GGC)) %>%
   pivot_longer(cols = c(NMI, GGC), names_to = "Metric", values_to = "Score") %>%
   mutate(Null_P95 = ifelse(Metric == "GGC", GGC_null_p95, NA_real_))
 
-df_plot_tcga$Aresta <- factor(df_plot_tcga$Aresta, levels = unique(arestas_tcga$Aresta))
+df_plot_tcga$Aresta <- factor(df_plot_tcga$Aresta, levels = arestas_tcga$Aresta[arestas_tcga$Branch == fg$branch])
 
 p_nmi_ggc_tcga <- ggplot(df_plot_tcga, aes(x = Aresta, y = Score, fill = Status)) +
   geom_col(width = 0.7) +
@@ -593,8 +696,9 @@ p_nmi_ggc_tcga <- ggplot(df_plot_tcga, aes(x = Aresta, y = Score, fill = Status)
     "NOT SIGNIFICANT"        = "#E74C3C"
   )) +
   labs(
-    title = "Information-Theoretic Pathway Validation in TCGA Cohort",
-    subtitle = "Primary tumours; colour = permutation test (BH p.adj < 0.05); dashed line = 95th percentile of GGC under independence",
+    title = fg$titulo,
+    subtitle = paste0("Primary tumours; colour = permutation test (BH p.adj < 0.05); dashed line = 95th percentile of GGC under independence",
+                      if (fg$branch == RAMO_PIROPTOSE) paste0("\n", NOTA_VIA) else ""),
     x = "Pathway Regulatory Interactions",
     y = "Dependence Score",
     fill = "Edge Validation Status"
@@ -616,17 +720,19 @@ p_nmi_ggc_tcga <- ggplot(df_plot_tcga, aes(x = Aresta, y = Score, fill = Status)
   )
 
 # Salvar figura na pasta de figuras do projeto
-caminho_fig_nmi_ggc <- file.path(cfg$out, "figures", "Fig_Pathway_Validation_DDR_GSDME_TCGA_EN.png")
+caminho_fig_nmi_ggc <- file.path(cfg$out, "figures", fg$arquivo)
 
 ggsave(
-  filename = caminho_fig_nmi_ggc, 
-  plot = p_nmi_ggc_tcga, 
-  width = 10, 
-  height = 6, 
+  filename = caminho_fig_nmi_ggc,
+  plot = p_nmi_ggc_tcga,
+  width = 10,
+  height = 6,
   dpi = 300
 )
 
 cat("\nGráfico em inglês gerado e salvo com sucesso em:\n", caminho_fig_nmi_ggc, "\n")
+
+}  # fim do loop por ramo (NMI/GGC)
 
 
 
@@ -646,17 +752,15 @@ cat("\n====================================================================\n")
 cat(" STARTING SPEARMAN EDGE VALIDATION FOR TCGA-LIHC\n")
 cat("====================================================================\n")
 
-# 1. DEFINIÇÃO DAS ARESTAS DO MODELO COM miR-204 DIRETO
-arestas_tcga <- data.frame(
-  from = c("ATM", "CDC25A", "E2F1", "MYC", "MALAT1", "miR-204", "SIRT1", "TP53", "CDKN1A", "CASP3"),
-  to   = c("CDC25A", "E2F1", "MYC", "MALAT1", "miR-204", "SIRT1", "TP53", "CDKN1A", "CASP3", "GSDME"),
-  sign = c(-1, 1, 1, 1, -1, -1, -1, 1, -1, 1),
-  stringsAsFactors = FALSE
-)
+# 1. DEFINIÇÃO DAS ARESTAS DO MODELO COM miR-204 DIRETO (via principal + ramo pró-piroptose)
+# Mesma tabela usada no NMI/GGC (definir_arestas_tcga), com nomes de colunas em minúsculas.
+if (!exists("definir_arestas_tcga")) stop("Rode antes a seção de NMI/GGC, que define definir_arestas_tcga().")
+.a <- if (exists("arestas_tcga_def")) arestas_tcga_def else definir_arestas_tcga()
+arestas_tcga <- data.frame(from = .a$From, to = .a$To, sign = .a$Sign, via = .a$Via,
+                           branch = .a$Branch, aresta = .a$Aresta, stringsAsFactors = FALSE)
 
 arestas_tcga$tipo <- ifelse(arestas_tcga$sign == 1, "Activation", "Inhibition")
 arestas_tcga$simbolo <- ifelse(arestas_tcga$sign == 1, "→", "-|")
-arestas_tcga$aresta <- paste(arestas_tcga$from, arestas_tcga$simbolo, arestas_tcga$to)
 
 # 2. PREPARAR A MATRIZ DE EXPRESSÃO LARGA (AMOSTRAS x GENES/MI
 # Converte a tabela 'expressao' gerada pelo seu pipeline TCGA
@@ -713,8 +817,12 @@ for (i in seq_len(nrow(resultado_tcga))) {
   }
 }
 
-# Ajuste de p-valor por FDR (antes da classificação)
-resultado_tcga$p_adj <- p.adjust(resultado_tcga$p_value, method = "BH")
+# Ajuste de p-valor por FDR (antes da classificação), separado por ramo
+resultado_tcga$p_adj <- NA_real_
+for (rm in unique(resultado_tcga$branch)) {
+  ix <- resultado_tcga$branch == rm
+  resultado_tcga$p_adj[ix] <- p.adjust(resultado_tcga$p_value[ix], method = "BH")
+}
 
 resultado_tcga$validation <- "NOT REPRESENTED"
 resultado_tcga$evidence   <- "NOT REPRESENTED"
@@ -745,8 +853,8 @@ for (i in seq_len(nrow(resultado_tcga))) {
 # 4. ORGANIZAÇÃO E EXPOSIÇÃO DOS RESULTADOS
 tabela_validacao_tcga <- resultado_tcga %>%
   select(
-    Dataset = dataset, Edge = aresta, Source_Gene = from, Edge_Symbol = simbolo,
-    Target_Gene = to, Interaction_Type = tipo, Source_Gene_in_Dataset = gene_from_dataset,
+    Dataset = dataset, Branch = branch, Edge = aresta, Source_Gene = from, Edge_Symbol = simbolo,
+    Target_Gene = to, Via_Model_Node = via, Interaction_Type = tipo, Source_Gene_in_Dataset = gene_from_dataset,
     Target_Gene_in_Dataset = gene_to_dataset, Edge_Represented = edge_represented,
     N_Tumor_Samples = N_samples, Rho_Spearman = rho_spearman, p_value, p_adj, Validation = validation,
     Evidence = evidence, Interpretation = interpretation
@@ -758,13 +866,22 @@ print(tabela_validacao_tcga, row.names = FALSE)
 # Salvar CSVs
 write.csv(tabela_validacao_tcga, file.path(cfg$out, "tables", "boolean_model_edge_validation_TCGA_spearman.csv"), row.names = FALSE)
 
-# 5. GERAÇÃO DA FIGURA EM INGLÊS (HEATMAP / TILE)
-ordem_arestas_tcga <- c(
-  "ATM -| CDC25A", "CDC25A → E2F1", "E2F1 → MYC", "MYC → MALAT1", "MALAT1 -| miR-204",
-  "miR-204 -| SIRT1", "SIRT1 -| TP53", "TP53 → CDKN1A", "CDKN1A -| CASP3", "CASP3 → GSDME"
+# 5. GERAÇÃO DA FIGURA EM INGLÊS (HEATMAP / TILE) — uma por ramo
+# A da via principal mantém o nome de arquivo original (Figura 6B do manuscrito);
+# a do ramo pró-piroptose é a Figura 7B.
+figuras_spearman_tcga <- list(
+  list(branch = RAMO_PRINCIPAL, titulo = "Validation of Boolean Model Edges in TCGA Cohort (Spearman Correlation)",
+       arquivo = "Fig_Edge_Validation_Spearman_TCGA_EN.png"),
+  list(branch = RAMO_PIROPTOSE, titulo = "Validation of the Pyroptotic Branch in TCGA Cohort (Spearman Correlation)",
+       arquivo = "Fig_Pyroptotic_Branch_Spearman_TCGA_EN.png")
 )
 
+for (fg in figuras_spearman_tcga) {
+
+ordem_arestas_tcga <- arestas_tcga$aresta[arestas_tcga$branch == fg$branch]
+
 dados_fig_tcga <- tabela_validacao_tcga %>%
+  filter(Branch == fg$branch) %>%
   mutate(
     Edge = factor(Edge, levels = ordem_arestas_tcga),
     Validation = factor(Validation, levels = c("COMPATIBLE", "INCOMPATIBLE", "NOT TESTABLE", "NOT REPRESENTED"))
@@ -787,8 +904,9 @@ figura_spearman_tcga <- ggplot(dados_fig_tcga, aes(x = Edge, y = Dataset, fill =
     drop = FALSE
   ) +
   labs(
-    title = "Validation of Boolean Model Edges in TCGA Cohort (Spearman Correlation)",
-    subtitle = "Primary tumour samples (TCGA-LIHC); * = significant after BH (p.adj < 0.05) in the model direction",
+    title = fg$titulo,
+    subtitle = paste0("Primary tumour samples (TCGA-LIHC); * = significant after BH (p.adj < 0.05) in the model direction",
+                      if (fg$branch == RAMO_PIROPTOSE) paste0("\n", NOTA_VIA) else ""),
     x = "Pathway Regulatory Interactions", y = "Cohort", fill = "Validation Status"
   ) +
   theme_minimal(base_size = 12) +
@@ -806,10 +924,12 @@ figura_spearman_tcga <- ggplot(dados_fig_tcga, aes(x = Edge, y = Dataset, fill =
 
 # Salvar Imagem
 ggsave(
-  filename = file.path(cfg$out, "figures", "Fig_Edge_Validation_Spearman_TCGA_EN.png"),
+  filename = file.path(cfg$out, "figures", fg$arquivo),
   plot = figura_spearman_tcga,
   width = 12, height = 4.5, dpi = 300
 )
 
-cat("\nFigura gerada e salva com sucesso!\n")
+cat("\nFigura gerada e salva com sucesso:", fg$arquivo, "\n")
+
+}  # fim do loop por ramo (Spearman)
 

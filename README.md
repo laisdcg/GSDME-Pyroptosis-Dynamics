@@ -18,9 +18,9 @@ The study asks which regulatory conditions allow CASP3 activation to end in GSDM
 2. **Model perturbation.** Stable states under persistent DNA damage (`DDR = 1`), followed by single and combined gain-of-function (E1, node = 1) and loss-of-function (KO, node = 0) perturbations.
 3. **Two-pronged validation.**
    - **(3A) Experimental:** the predicted phenotypes are compared with phenotypes reported in independent GoF/LoF experimental studies.
-   - **(3B) Database:** the model edges are assessed in patient data (GEO and TCGA-LIHC) using Spearman's correlation (direction) and NMI/GGC (dependence).
+   - **(3B) Database:** the model edges are assessed in patient data (GEO and TCGA-LIHC) using Spearman's correlation (direction) and NMI/GGC (dependence). Two sets of edges are tested: the **main pathway** and the **pro-death (pyroptotic) branch**.
 
-**Main result:** upstream regulators (MALAT1, miR-204-5p, SIRT1, Wip1) determine whether the network reaches death-associated states. GSDME availability then decides the execution phenotype: CASP3 with functional GSDME leads to pyroptosis, and CASP3 without GSDME leads to apoptosis. In patient data, CDC25A–E2F1 and CASP3–GSDME are the most consistently supported interactions.
+**Main result:** upstream regulators (MALAT1, miR-204-5p, SIRT1, Wip1) determine whether the network reaches death-associated states. GSDME availability then decides the execution phenotype: CASP3 with functional GSDME leads to pyroptosis, and CASP3 without GSDME leads to apoptosis. In patient data, CDC25A–E2F1 and CASP3–GSDME are the most consistently supported interactions. In TCGA-LIHC, the pro-death branch is also supported in two segments, p53–PUMA–BAX and CASP9–CASP3–GSDME, separated by the MOMP step, which has no transcriptomic equivalent.
 
 ---
 
@@ -34,7 +34,7 @@ GSDME-Pyroptosis-Dynamics/
 ├── scripts/
 │   ├── bulkrna-seq-gsdme.R      # GEO analyses + Boolean perturbation analysis (BoolNet)
 │   ├── tcga-lihc-gsdme.R        # TCGA-LIHC download, expression, Spearman and NMI/GGC
-│   └── Match the pictures.R     # Combines GEO (A) and TCGA (B) panels into Figures 5 and 6
+│   └── Match the pictures.R     # Combines GEO (A) and TCGA (B) panels into Figures 6–9
 ├── results/                     # Tables (.csv) and figures (.png/.pdf) produced by the scripts
 ├── LICENSE
 └── README.md
@@ -79,13 +79,30 @@ Perturbations analysed (all with `DDR = 1`):
 
 Tumour and non-tumour groups are taken from the sample annotation of each GEO series and from the GDC sample type (`Primary Tumor`, `Solid Tissue Normal`).
 
-### Pathway edges evaluated
+### Edges evaluated
+
+**Main pathway** (10 edges; TRPM3 replaces miR-204-5p in the GEO cohorts):
 
 ```text
 ATM ┤ CDC25A → E2F1 → MYC → MALAT1 ┤ miR-204-5p ┤ SIRT1 ┤ TP53 → CDKN1A ┤ CASP3 → GSDME
 ```
 
-(TRPM3 replaces miR-204-5p in the GEO cohorts.)
+**Pro-death (pyroptotic) branch** (7 edges, read directly from the `.zginml` file):
+
+```text
+SIRT1 ┤ TP53 → BBC3 (PUMA) → BAX → CASP9 → CASP3 → DFNA5 (GSDME)
+TP53 → DFNA5
+```
+
+Some steps of this branch pass through model states that are not genes. In these cases the two measured genes on either side are tested, and the intermediate state is shown as `via` in the figures:
+
+| Edge tested | Model state in between |
+|---|---|
+| TP53 → BBC3 | `p53_K` (p53-Killer) |
+| TP53 → DFNA5 | `p53_K` (p53-Killer) |
+| BAX → CASP9 | `MOMP` |
+
+TP53 mRNA is used for both `p53` and `p53_K`. The scripts check that every edge of the branch exists in the model and take its sign from the model.
 
 ### Statistics
 
@@ -93,12 +110,12 @@ ATM ┤ CDC25A → E2F1 → MYC → MALAT1 ┤ miR-204-5p ┤ SIRT1 ┤ TP53 →
   - GEO: two-sided Wilcoxon rank-sum test on log2 series-matrix values, with Benjamini–Hochberg (BH) correction within each cohort.
   - TCGA-LIHC: paired Wilcoxon signed-rank test on log2(TPM + 1) or log2(RPM + 1), with BH correction.
 - **Spearman correlation**
-  - Primary tumour samples only, at least 5 valid pairs per edge, with BH correction within each cohort.
+  - Primary tumour samples only, at least 5 valid pairs per edge, with BH correction within each cohort and each set of edges (main pathway and pro-death branch are corrected separately, so adding the branch does not change the main-pathway results).
   - An edge is *incompatible* only when the correlation is significant (adjusted p < 0.05) in the direction opposite to the model sign. An asterisk marks edges that are significant in the predicted direction.
 - **NMI / GGC**
   - Primary tumour samples only. Data are discretised with `infotheo::discretize` (equal frequency, N^(1/3) bins), and mutual information is estimated in nats.
   - NMI = 2·MI / (H₁ + H₂); GGC = √(1 − e^(−2·MI)).
-  - Significance comes from a permutation test (2,000 permutations of the target gene) with BH correction. GGC is reported as the effect size, together with the 95th percentile of its null distribution.
+  - Significance comes from a permutation test (2,000 permutations of the target gene) with BH correction within each cohort and each set of edges. GGC is reported as the effect size, together with the 95th percentile of its null distribution.
   - A fixed GGC threshold is **not** used: with these sample sizes, independent genes already reach GGC ≈ 0.30.
 
 ---
@@ -121,13 +138,13 @@ BiocManager::install(c("GEOquery", "Biobase"))
 
 ### 1. GEO analyses and Boolean perturbations: `scripts/bulkrna-seq-gsdme.R`
 
-1. Put both `.zginml` files in a working folder (the script uses `~/Downloads/GSDME/` by default; edit `setwd()` at the top).
+1. Put `GSDME_Pyroptosis_GEO.zginml` in a working folder and set `PROJECT_DIR` at the top of the script to that folder (default: `~/Downloads/GSDME/`).
 2. Run the script from top to bottom. It downloads GSE14520, GSE60502 and GSE121248 with GEOquery and then runs, in order:
    - component coverage
-   - expression profiling and differential expression (Figure 3)
-   - Spearman validation (Figure 5A)
-   - NMI/GGC validation (Figure 6A)
-   - Boolean perturbation analysis with BoolNet (Figure 7)
+   - expression profiling and differential expression (Figure 4)
+   - Spearman validation of the main pathway (Figure 6A) and of the pro-death branch (Figure 7A)
+   - NMI/GGC validation of the main pathway (Figure 8A) and of the pro-death branch (Figure 9A)
+   - Boolean perturbation analysis with BoolNet (Figure 3)
 
 ### 2. TCGA-LIHC analyses: `scripts/tcga-lihc-gsdme.R`
 
@@ -137,7 +154,7 @@ BiocManager::install(c("GEOquery", "Biobase"))
 
 ### 3. Combine panels: `scripts/Match the pictures.R`
 
-This script stacks the GEO (A) and TCGA (B) panels into Figures 5 and 6.
+Run it from the folder used by `bulkrna-seq-gsdme.R`. It stacks the GEO (A) and TCGA (B) panels into Figures 6–9.
 
 ---
 
@@ -147,11 +164,14 @@ This script stacks the GEO (A) and TCGA (B) panels into Figures 5 and 6.
 |---|---|---|
 | Fig. 1 – Workflow | Schematic | — |
 | Fig. 2 – Boolean model | GINsim | `model/*.zginml` |
-| Fig. 3 – GEO expression | `bulkrna-seq-gsdme.R` | `Fig4_GSE_Cohorts_Expression_Facet.png`, `GEO_differential_expression_model_components.csv`, `Fig_Expressao_Diferencial_GSE*.png` |
-| Fig. 4 – TCGA expression | `tcga-lihc-gsdme.R` | `Figure_TCGA_Facet_Components_Style.png`, `06_paired_expression_tests.csv`, `04_expression_long.csv` |
-| Fig. 5 – Spearman | both scripts + `Match the pictures.R` | `Figure5_Spearman_GEO_TCGA.png`, `boolean_model_edge_validation_COMPLETE.csv` (GEO), `boolean_model_edge_validation_TCGA_spearman.csv` |
-| Fig. 6 – NMI/GGC | both scripts + `Match the pictures.R` | `Figure6_NMI_GGC_GEO_TCGA.png`, `GEO_NMI_GGC_permutation.csv`, `11_validacao_nmi_ggc_tcga.csv` |
-| Fig. 7 – In silico perturbations | `bulkrna-seq-gsdme.R` (BoolNet) | `Figure_layout_blue_perturbations_red.png/.pdf`, `stable_states_used_in_figure.csv` |
+| Fig. 3 – In silico perturbations | `bulkrna-seq-gsdme.R` (BoolNet) | `Figure_layout_blue_perturbations_red.png/.pdf`, `stable_states_used_in_figure.csv` |
+| Fig. 4 – GEO expression | `bulkrna-seq-gsdme.R` | `Fig4_GSE_Cohorts_Expression_Facet.png`, `GEO_differential_expression_model_components.csv`, `Fig_Expressao_Diferencial_GSE*.png` |
+| Fig. 5 – TCGA expression | `tcga-lihc-gsdme.R` | `Figure_TCGA_Facet_Components_Style.png`, `06_paired_expression_tests.csv`, `04_expression_long.csv` |
+| Fig. 6 – Spearman, main pathway | both scripts + `Match the pictures.R` | `Figure6_Spearman_GEO_TCGA.png`, `boolean_model_edge_validation_COMPLETE.csv` (GEO), `boolean_model_edge_validation_TCGA_spearman.csv` |
+| Fig. 7 – Spearman, pro-death branch | both scripts + `Match the pictures.R` | `Figure7_Spearman_PyroptoticBranch_GEO_TCGA.png` (rows with `Branch = Pyroptotic branch` in the Fig. 6 tables) |
+| Fig. 8 – NMI/GGC, main pathway | both scripts + `Match the pictures.R` | `Figure8_NMI_GGC_GEO_TCGA.png`, `GEO_NMI_GGC_permutation.csv`, `11_validacao_nmi_ggc_tcga.csv` |
+| Fig. 9 – NMI/GGC, pro-death branch | both scripts + `Match the pictures.R` | `Figure9_NMI_GGC_PyroptoticBranch_GEO_TCGA.png` (rows with `Branch = Pyroptotic branch` in the Fig. 8 tables) |
+| Fig. 10 – Proposed mechanism | Schematic (BioGDP) | — |
 
 TCGA selection tables: `01_model_name_mapping.csv` (model node → gene symbol), `02_all_files_selection_audit.csv` (every GDC file and why it was selected or excluded) and `03_download_manifest.csv` (files used).
 

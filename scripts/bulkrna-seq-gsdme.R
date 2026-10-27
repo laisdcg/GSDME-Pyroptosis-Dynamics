@@ -2,7 +2,10 @@
 # Este script foi desenhado para ser universal. Aceita qualquer arquivo estruturado 
 # e valida contra as coortes GSE14520, GSE60502 e GSE121248 de Carcinoma Hepatocelular.
 
-setwd("~/Downloads/GSDME/")
+# Pasta de trabalho: coloque aqui o modelo GSDME_Pyroptosis_GEO.zginml (pasta model/ do repositório).
+PROJECT_DIR <- "~/Downloads/GSDME/"
+setwd(PROJECT_DIR)
+arquivo_ginsim <- file.path(PROJECT_DIR, "GSDME_Pyroptosis_GEO.zginml")
 
 # 1. DEPENDÊNCIAS
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
@@ -73,10 +76,35 @@ extrair_nos_modelo <- function(caminho_arquivo) {
   
   # Criando a coluna resolved_name de forma nativa
   df_nos$resolved_name <- ifelse(!is.na(df_nos$name) & df_nos$name != "", df_nos$name, df_nos$id)
-  
-  cat("[OK] Modelo carregado com sucesso!", nrow(df_nos), "nós mapeados.\n")
+  df_nos$tipo_linha    <- "node"
+  df_nos$componente_de <- NA_character_
+
+  # NOVO (out/2026): nós de complexo (ex.: "(CCND1 ou CCND2 ou CCND3) E (CDK4 ou CDK6)")
+  # são quebrados nos genes das subunidades, do mesmo jeito que o script do TCGA faz
+  # (.tcga_complex_components). A linha do complexo fica marcada como "complex" (não é um
+  # gene) e cada subunidade entra como uma linha "component".
+  conectores <- c("E", "OU", "OR", "AND", "NOT", "NAO", "COM", "SEM", "DE", "DO", "DA", "A", "O")
+  e_complexo <- grepl("[ ()&|]", df_nos$resolved_name)
+  extras <- lapply(which(e_complexo), function(i) {
+    partes <- toupper(trimws(unlist(strsplit(df_nos$resolved_name[i], "[^A-Za-z0-9]+"))))
+    partes <- unique(partes[nzchar(partes) & !partes %in% conectores & grepl("^[A-Z][A-Z0-9]+$", partes)])
+    partes <- setdiff(partes, df_nos$resolved_name)
+    if (!length(partes)) return(NULL)
+    data.frame(id = paste0(df_nos$id[i], "::", partes), name = partes, resolved_name = partes,
+               tipo_linha = "component", componente_de = df_nos$id[i], stringsAsFactors = FALSE)
+  })
+  df_nos$tipo_linha[e_complexo] <- "complex"
+  extras <- extras[!vapply(extras, is.null, logical(1))]
+  if (length(extras)) df_nos <- rbind(df_nos, do.call(rbind, extras))
+
+  cat("[OK] Modelo carregado com sucesso!", sum(df_nos$tipo_linha != "component"), "nós mapeados",
+      "(", sum(df_nos$tipo_linha == "component"), "subunidades de complexo adicionadas ).\n")
   return(df_nos)
 }
+
+# Nomes procurados nos datasets: todos os nós, exceto a linha "complex" (que é substituída
+# pelas suas subunidades). É a mesma lógica do TCGA, onde o complexo vira CCND1-3, CDK4 e CDK6.
+nomes_mensuraveis <- function(nos) nos$resolved_name[nos$tipo_linha != "complex"]
 
 # 2. PARSER AUTOMÁTICO DE REGRAS LÓGICAS DO GINSIM (SEM DIGITAÇÃO MANUAL)
 
@@ -109,7 +137,7 @@ extrair_regras_ginsim <- function(caminho_arquivo) {
 }
 
 # Executar a extração automática das regras contidas no seu GINsim
-modelo_xml_com_regras <- extrair_regras_ginsim("~/Downloads/GSDME/GINsim-GSDME_Pyroptosis.zginml")
+modelo_xml_com_regras <- extrair_regras_ginsim(arquivo_ginsim)
 
 
 ###### BAIXANDO GEO ########
@@ -161,10 +189,10 @@ baixar_e_preparar_geo <- function(gse_code) {
 ######### SIMULADOR BOOLEANO REMOVIDO #########
 # CORREÇÃO (out/2026): a função simular_estado_estacionario() que ficava aqui NÃO usava as regras
 # do GINsim — eram regras inventadas (ex.: MALAT1 = DDR) só com 6 nós. Nada no manuscrito deve vir
-# dela. As simulações reais (Figura 7) estão na seção 'Validation of model', que importa as regras
+# dela. As simulações reais (Figura 3 do manuscrito) estão na seção 'Validation of model', que importa as regras
 # do .zginml com BoolNet e enumera os pontos fixos exatamente.
 
-nos_modelo <- extrair_nos_modelo("~/Downloads/GSDME/GINsim-GSDME_Pyroptosis.zginml")
+nos_modelo <- extrair_nos_modelo(arquivo_ginsim)
 
 
 
@@ -174,7 +202,7 @@ library(GEOquery)
 library(Biobase)
 
 # 1. Defina o caminho completo utilizando a subpasta correta do projeto
-arquivo_ginsim <- "~/Downloads/GSDME/GINsim-GSDME_Pyroptosis.zginml"
+# (arquivo_ginsim é definido no topo do script)
 
 # 2. Expanda o caminho para que o R resolva o '~' antes de abrir o zip
 caminho_completo <- path.expand(arquivo_ginsim)
@@ -196,10 +224,11 @@ cat("==================================================\n")
 
 for(nome_ds in names(lista_datasets)) {
   genes_ds <- colnames(lista_datasets[[nome_ds]][["expr"]])
-  encontrados <- sum(nos_modelo[["resolved_name"]] %in% genes_ds)
-  porcentagem <- (encontrados / nrow(nos_modelo)) * 100
-  cat(sprintf("- %s: %.2f%% dos componentes encontrados (%d de %d)\n", 
-              nome_ds, porcentagem, encontrados, nrow(nos_modelo)))
+  alvos <- nomes_mensuraveis(nos_modelo)
+  encontrados <- sum(alvos %in% genes_ds)
+  porcentagem <- (encontrados / length(alvos)) * 100
+  cat(sprintf("- %s: %.2f%% dos componentes encontrados (%d de %d)\n",
+              nome_ds, porcentagem, encontrados, length(alvos)))
 }
 
 
@@ -2401,11 +2430,12 @@ genes_encontrados_total <- list()
 
 for(nome_ds in datasets_nomes) {
   genes_ds <- colnames(lista_datasets[[nome_ds]][["expr"]])
-  genes_modelo_encontrados <- nos_modelo[["resolved_name"]][nos_modelo[["resolved_name"]] %in% genes_ds]
-  
+  alvos <- nomes_mensuraveis(nos_modelo)
+  genes_modelo_encontrados <- alvos[alvos %in% genes_ds]
+
   # Salva para uso posterior
   genes_encontrados_total[[nome_ds]] <- genes_modelo_encontrados
-  pct <- (length(genes_modelo_encontrados) / nrow(nos_modelo)) * 100
+  pct <- (length(genes_modelo_encontrados) / length(alvos)) * 100
   porcentagens <- c(porcentagens, pct)
 }
 
@@ -2607,7 +2637,7 @@ barplot(porcentagens, col = c("#1ABC9C", "#3498DB", "#9B59B6"), border = NA, add
 # Colocar os valores exatos de porcentagem e contagem no topo de cada barra
 for(i in 1:length(porcentagens)) {
   total_encontrados <- length(genes_encontrados_total[[datasets_nomes[i]]])
-  texto_label <- sprintf("%.1f%%\n(%d/%d)", porcentagens[i], total_encontrados, nrow(nos_modelo))
+  texto_label <- sprintf("%.1f%%\n(%d/%d)", porcentagens[i], total_encontrados, length(nomes_mensuraveis(nos_modelo)))
   
   text(x = barras[i], y = porcentagens[i] + 5, 
        labels = texto_label, 
@@ -2623,7 +2653,7 @@ cat("[OK] Figura 3 (Gráfico de Cobertura GEO) gerada com sucesso!\n")
 # CORREÇÃO (out/2026). A versão anterior deste bloco tinha três problemas graves:
 #   (a) gerava valores de expressão com rnorm() e um "efeito" fixo por gene
 #       (Fig4_Expression_Screen_All_Datasets.png era inteiramente simulada);
-#   (b) na figura usada como Figura 3 do manuscrito, os rótulos Tumor/Normal eram
+#   (b) na figura usada como Figura 4 do manuscrito, os rótulos Tumor/Normal eram
 #       SORTEADOS com sample(prob = c(0.3, 0.7)), e não lidos do metadata;
 #   (c) a expressão diferencial classificava as amostras por regex em texto livre
 #       (inclusive "N$" e "T$", que casam qualquer texto terminado em n/t) e usava
@@ -2670,7 +2700,7 @@ grupo_amostras_geo <- function(nome_ds) {
   factor(g, levels = c("Adjacent non-tumor", "Primary HCC"))
 }
 
-genes_do_modelo <- nos_modelo$resolved_name
+genes_do_modelo <- nomes_mensuraveis(nos_modelo)   # inclui CCND1-3, CDK4, CDK6 no lugar do complexo
 
 # ------------------------------------------------------------------------------
 # 1. FIGURA 3 — BOXPLOTS COM OS GRUPOS VERDADEIROS
@@ -2863,16 +2893,109 @@ print(names(lista_datasets))
 
 # 2. BOOLEAN MODEL EDGES (TRPM3 = proxy do miR-204-5p nos GEO)
 
-arestas_modelo <- data.frame(
-  from = c("ATM", "CDC25A", "E2F1", "MYC", "MALAT1", "TRPM3", "SIRT1", "TP53", "CDKN1A", "CASP3"),
-  to   = c("CDC25A", "E2F1", "MYC", "MALAT1", "TRPM3", "SIRT1", "TP53", "CDKN1A", "CASP3", "DFNA5"),
-  sign = c(-1, 1, 1, 1, -1, -1, -1, 1, -1, 1),
-  stringsAsFactors = FALSE
+# NOVO (out/2026): além da via principal, testa-se o ramo pró-piroptose do modelo:
+#   SIRT1 -| p53 -> p53-Killer -> PUMA -> BAX -> MOMP -> CASP9 -> CASP3 -> GSDME (e p53-Killer -> GSDME)
+# Os nós usam os NAMES do .zginml (TP53, BBC3, DFNA5...), não os IDs (p53, PUMA, GSDME...).
+# p53-Killer e MOMP são estados funcionais (não são genes), então as ligações que passam por eles
+# são testadas entre os genes medíveis das duas pontas; a coluna 'via' registra o nó intermediário.
+# A correção de BH é feita por dataset E por ramo, para que os resultados da via principal
+# (Figuras 6 e 8 do manuscrito) não mudem com a inclusão do novo ramo.
+
+RAMO_PRINCIPAL <- "Main pathway"
+RAMO_PIROPTOSE <- "Pyroptotic branch"
+NOTA_VIA <- "'via' = model state (not a gene) between the two measured genes; TP53 mRNA used for p53/p53-Killer"
+
+# O ramo pró-piroptose é LIDO DO .zginml (mesma função do script do TCGA): o script confere cada
+# ligação no modelo, usa o sinal dele, troca IDs por NAMES e atravessa p53-Killer e MOMP.
+if (!requireNamespace("xml2", quietly = TRUE)) install.packages("xml2")
+ler_modelo_ginsim <- function(caminho) {
+  caminho <- path.expand(caminho)
+  if (!file.exists(caminho)) stop("Modelo não encontrado: ", caminho)
+  if (grepl("\\.zginml$", caminho, ignore.case = TRUE)) {
+    arqs <- utils::unzip(caminho, list = TRUE)$Name
+    arq  <- arqs[grepl("\\.ginml$", arqs, ignore.case = TRUE)]
+    if (length(arq) != 1) stop("Não encontrei um único arquivo .ginml dentro do .zginml.")
+    con <- unz(caminho, arq); on.exit(close(con), add = TRUE)
+    doc <- xml2::read_xml(paste(readLines(con, warn = FALSE, encoding = "UTF-8"), collapse = "\n"))
+  } else {
+    doc <- xml2::read_xml(caminho)
+  }
+  nos   <- xml2::xml_find_all(doc, ".//node")
+  ids   <- xml2::xml_attr(nos, "id")
+  nomes <- xml2::xml_attr(nos, "name")
+  sem_nome <- is.na(nomes) | !nzchar(trimws(nomes))
+  nomes[sem_nome] <- ids[sem_nome]                       # nós sem name (ex.: MOMP) ficam com o ID
+  ed <- xml2::xml_find_all(doc, ".//edge")
+  list(nos = data.frame(id = ids, name = nomes, stringsAsFactors = FALSE),
+       arestas = data.frame(from = xml2::xml_attr(ed, "from"), to = xml2::xml_attr(ed, "to"),
+                            sinal = ifelse(xml2::xml_attr(ed, "sign") == "negative", -1, 1),
+                            stringsAsFactors = FALSE))
+}
+
+# Ramo pró-morte derivado do modelo -> data.frame From/To (símbolos dos dados), Sign, Via, Aresta (names)
+ramo_piroptose_do_modelo <- function(caminho_modelo) {
+  modelo <- ler_modelo_ginsim(caminho_modelo)
+  ramo_ids <- list(c("SIRT1", "p53"), c("p53", "p53_K"), c("p53_K", "PUMA"), c("PUMA", "BAX"),
+                   c("BAX", "MOMP"), c("MOMP", "CASP9"), c("CASP9", "CASP3"), c("CASP3", "GSDME"),
+                   c("p53_K", "GSDME"), c("CASP3", "PYROPTOSIS"), c("GSDME", "PYROPTOSIS"))
+  ramo <- do.call(rbind, lapply(ramo_ids, function(p) {
+    hit <- modelo$arestas[modelo$arestas$from == p[1] & modelo$arestas$to == p[2], , drop = FALSE]
+    if (!nrow(hit)) stop("A ligação ", p[1], " -> ", p[2], " não existe no modelo .zginml.")
+    hit[1, ]
+  }))
+  nome_de <- setNames(modelo$nos$name, modelo$nos$id)
+  nao_genes <- c("DDR", "p53_A", "p53_K", "MOMP",
+                 "PROLIFERATION", "RESISTANCE", "PYROPTOSIS", "APOPTOSIS", "CELL_CYCLE_ARREST")
+  e_gene <- function(id) !(id %in% nao_genes)
+
+  percorrer <- function(no, sinal, via, origem) {
+    saidas <- ramo[ramo$from == no, , drop = FALSE]
+    out <- list()
+    for (k in seq_len(nrow(saidas))) {
+      v <- saidas$to[k]; s <- sinal * saidas$sinal[k]
+      if (e_gene(v)) {
+        out[[length(out) + 1]] <- data.frame(from_id = origem, to_id = v, sinal = s,
+                                             via = paste(nome_de[via], collapse = " → "),
+                                             stringsAsFactors = FALSE)
+      } else if (v %in% ramo$from) {
+        out[[length(out) + 1]] <- percorrer(v, s, c(via, v), origem)
+      }
+    }
+    if (length(out)) do.call(rbind, out) else NULL
+  }
+  origens <- unique(ramo$from[e_gene(ramo$from)])
+  t <- do.call(rbind, lapply(origens, function(u) percorrer(u, 1, character(0), u)))
+
+  nome_from <- unname(nome_de[t$from_id]); nome_to <- unname(nome_de[t$to_id])
+  simbolo_dados <- function(x) x   # GEO: usa o name do modelo (DFNA5); encontrar_gene() também procura GSDME
+  out <- data.frame(From = simbolo_dados(nome_from), To = simbolo_dados(nome_to), Sign = t$sinal,
+                    Via = t$via, Branch = RAMO_PIROPTOSE, stringsAsFactors = FALSE)
+  out$Aresta <- paste0(nome_from, " ", ifelse(out$Sign == 1, "→", "-|"), " ", nome_to,
+                       ifelse(out$Via == "", "", paste0(" (via ", out$Via, ")")))
+  cat("\n[Modelo] Ramo pró-piroptose lido de", basename(caminho_modelo), ":\n")
+  cat(paste0("  ", out$Aresta, collapse = "\n"), "\n")
+  out
+}
+
+if (!exists("arquivo_ginsim") || !file.exists(path.expand(arquivo_ginsim))) {
+  cat("Selecione o modelo GINsim (.zginml)...\n"); arquivo_ginsim <- file.choose()
+}
+ramo_geo <- ramo_piroptose_do_modelo(path.expand(arquivo_ginsim))
+
+arestas_modelo <- rbind(
+  data.frame(
+    from = c("ATM", "CDC25A", "E2F1", "MYC", "MALAT1", "TRPM3", "SIRT1", "TP53", "CDKN1A", "CASP3"),
+    to   = c("CDC25A", "E2F1", "MYC", "MALAT1", "TRPM3", "SIRT1", "TP53", "CDKN1A", "CASP3", "DFNA5"),
+    sign = c(-1, 1, 1, 1, -1, -1, -1, 1, -1, 1),
+    via  = "", branch = RAMO_PRINCIPAL, stringsAsFactors = FALSE),
+  data.frame(from = ramo_geo$From, to = ramo_geo$To, sign = ramo_geo$Sign, via = ramo_geo$Via,
+             branch = RAMO_PIROPTOSE, stringsAsFactors = FALSE)
 )
 
 arestas_modelo$tipo <- ifelse(arestas_modelo$sign == 1, "Activation", "Inhibition")
 arestas_modelo$simbolo <- ifelse(arestas_modelo$sign == 1, "→", "-|")
-arestas_modelo$aresta <- paste(arestas_modelo$from, arestas_modelo$simbolo, arestas_modelo$to)
+arestas_modelo$aresta <- paste0(arestas_modelo$from, " ", arestas_modelo$simbolo, " ", arestas_modelo$to,
+                                ifelse(arestas_modelo$via == "", "", paste0(" (via ", arestas_modelo$via, ")")))
 
 # 3. DATASET COMPARISON METADATA CONFIGURATION (somente amostras tumorais)
 comparacoes <- list(
@@ -2975,8 +3098,8 @@ classificar_spearman <- function(rho, p_adj, sign, represented) {
 }
 
 tabela_validacao <- tabela_validacao %>%
-  group_by(dataset) %>%
-  mutate(p_adj = p.adjust(p_value, method = "BH")) %>%   # BH por dataset (NAs ignorados)
+  group_by(dataset, branch) %>%
+  mutate(p_adj = p.adjust(p_value, method = "BH")) %>%   # BH por dataset e por ramo (NAs ignorados)
   ungroup()
 
 cls <- t(mapply(classificar_spearman, tabela_validacao$rho_spearman, tabela_validacao$p_adj,
@@ -2996,8 +3119,8 @@ tabela_validacao$interpretation <- dplyr::recode(
 
 tabela_validacao <- tabela_validacao %>%
   transmute(
-    Dataset = dataset, Edge = aresta, Source_Gene = from, Edge_Symbol = simbolo,
-    Target_Gene = to, Interaction_Type = tipo,
+    Dataset = dataset, Branch = branch, Edge = aresta, Source_Gene = from, Edge_Symbol = simbolo,
+    Target_Gene = to, Via_Model_Node = via, Interaction_Type = tipo,
     Source_Gene_in_Dataset = gene_from_dataset, Target_Gene_in_Dataset = gene_to_dataset,
     Edge_Represented = edge_represented, N_Tumor_Samples = N_samples,
     Rho_Spearman = round(rho_spearman, 3), p_value, p_adj,
@@ -3012,7 +3135,7 @@ cat("====================================================================\n")
 print(as.data.frame(tabela_validacao), row.names = FALSE)
 
 resumo_dataset <- tabela_validacao %>%
-  group_by(Dataset) %>%
+  group_by(Dataset, Branch) %>%
   summarise(
     Total_Edges = n(),
     Represented_Edges = sum(Edge_Represented),
@@ -3029,7 +3152,7 @@ cat("\n SUMMARY BY DATASET\n")
 print(as.data.frame(resumo_dataset), row.names = FALSE)
 
 resumo_aresta <- tabela_validacao %>%
-  group_by(Edge, Source_Gene, Edge_Symbol, Target_Gene, Interaction_Type) %>%
+  group_by(Branch, Edge, Source_Gene, Edge_Symbol, Target_Gene, Interaction_Type) %>%
   summarise(
     Datasets_Evaluated = n(),
     Datasets_Represented = sum(Edge_Represented),
@@ -3060,46 +3183,62 @@ niveis_validacao <- c("COMPATIBLE", "INCOMPATIBLE", "NOT TESTABLE", "NOT REPRESE
 cores_validacao <- c("COMPATIBLE" = "#27AE60", "INCOMPATIBLE" = "#C0392B",
                      "NOT TESTABLE" = "#F39C12", "NOT REPRESENTED" = "#95A5A6")
 
-dados_figura <- tabela_validacao %>%
-  mutate(
-    Edge = factor(Edge, levels = ordem_arestas),
-    Validation = factor(Validation, levels = niveis_validacao),
-    Label = ifelse(is.na(Rho_Spearman), as.character(Validation),
-                   paste0(Validation, "\n(ρ=", Rho_Spearman, ifelse(Evidence == "SUPPORTED", "*", ""), ")"))
-  )
+# Uma figura por ramo: a da via principal mantém o nome de arquivo original (Figura 6A do
+# manuscrito, sem alteração) e a do ramo pró-piroptose sai em arquivos novos (Figura 7A).
+figuras_spearman_geo <- list(
+  list(branch = RAMO_PRINCIPAL, titulo = "Validation of Boolean Model Edges (Spearman Correlation)",
+       f1 = "FIGURE_1_edge_validation_spearman.png", f3 = "FIGURE_3_edge_validation_status_spearman.png"),
+  list(branch = RAMO_PIROPTOSE, titulo = "Validation of the Pyroptotic Branch (Spearman Correlation)",
+       f1 = "FIGURE_1b_pyroptotic_branch_spearman.png", f3 = "FIGURE_3b_pyroptotic_branch_status_spearman.png")
+)
 
-figura_validacao <- ggplot(dados_figura, aes(x = Edge, y = Dataset, fill = Validation)) +
-  geom_tile(color = "white", linewidth = 0.8) +
-  geom_text(aes(label = Label), size = 2.8) +
-  scale_fill_manual(values = cores_validacao, drop = TRUE) +
-  labs(
-    title = "Validation of Boolean Model Edges (Spearman Correlation)",
-    subtitle = "Primary tumour samples only; * = significant after BH (p.adj < 0.05) in the model direction",
-    x = "Model Edge", y = "Dataset", fill = "Validation Status"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, face = "bold"),
-        plot.title = element_text(face = "bold"), panel.grid = element_blank())
+for (fg in figuras_spearman_geo) {
+  ordem_ramo <- arestas_modelo$aresta[arestas_modelo$branch == fg$branch]
 
-ggsave("FIGURE_1_edge_validation_spearman.png", figura_validacao, width = 16, height = 7, dpi = 300, bg = "white")
+  dados_figura <- tabela_validacao %>%
+    filter(Branch == fg$branch) %>%
+    mutate(
+      Edge = factor(Edge, levels = ordem_ramo),
+      Validation = factor(Validation, levels = niveis_validacao),
+      Label = ifelse(is.na(Rho_Spearman), as.character(Validation),
+                     paste0(Validation, "\n(ρ=", Rho_Spearman, ifelse(Evidence == "SUPPORTED", "*", ""), ")"))
+    )
 
-dados_status <- tabela_validacao %>%
-  count(Dataset, Validation, name = "Number_of_Edges") %>%
-  mutate(Validation = factor(Validation, levels = niveis_validacao))
+  figura_validacao <- ggplot(dados_figura, aes(x = Edge, y = Dataset, fill = Validation)) +
+    geom_tile(color = "white", linewidth = 0.8) +
+    geom_text(aes(label = Label), size = 2.8) +
+    scale_fill_manual(values = cores_validacao, drop = TRUE) +
+    labs(
+      title = fg$titulo,
+      subtitle = paste0("Primary tumour samples only; * = significant after BH (p.adj < 0.05) in the model direction",
+                        if (fg$branch == RAMO_PIROPTOSE) paste0("\n", NOTA_VIA) else ""),
+      x = "Model Edge", y = "Dataset", fill = "Validation Status"
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, face = "bold"),
+          plot.title = element_text(face = "bold"), panel.grid = element_blank())
 
-figura_status <- ggplot(dados_status, aes(x = Dataset, y = Number_of_Edges, fill = Validation)) +
-  geom_col(position = "stack", width = 0.6) +
-  geom_text(aes(label = Number_of_Edges), position = position_stack(vjust = 0.5),
-            size = 4, color = "white", fontface = "bold") +
-  scale_fill_manual(values = cores_validacao, drop = TRUE) +
-  labs(title = "Boolean Model Edge Validation Summary",
-       subtitle = "Number of edges by validation status across GEO cohorts",
-       x = "Dataset", y = "Number of Edges", fill = "Validation Status") +
-  theme_minimal(base_size = 12) +
-  theme(plot.title = element_text(face = "bold"), panel.grid.minor = element_blank())
+  ggsave(fg$f1, figura_validacao, width = 16, height = 7, dpi = 300, bg = "white")
 
-ggsave("FIGURE_3_edge_validation_status_spearman.png", figura_status, width = 10, height = 6, dpi = 300, bg = "white")
-cat("Figures saved: FIGURE_1_edge_validation_spearman.png, FIGURE_3_edge_validation_status_spearman.png\n")
+  dados_status <- tabela_validacao %>%
+    filter(Branch == fg$branch) %>%
+    count(Dataset, Validation, name = "Number_of_Edges") %>%
+    mutate(Validation = factor(Validation, levels = niveis_validacao))
+
+  figura_status <- ggplot(dados_status, aes(x = Dataset, y = Number_of_Edges, fill = Validation)) +
+    geom_col(position = "stack", width = 0.6) +
+    geom_text(aes(label = Number_of_Edges), position = position_stack(vjust = 0.5),
+              size = 4, color = "white", fontface = "bold") +
+    scale_fill_manual(values = cores_validacao, drop = TRUE) +
+    labs(title = paste0("Boolean Model Edge Validation Summary — ", fg$branch),
+         subtitle = "Number of edges by validation status across GEO cohorts",
+         x = "Dataset", y = "Number of Edges", fill = "Validation Status") +
+    theme_minimal(base_size = 12) +
+    theme(plot.title = element_text(face = "bold"), panel.grid.minor = element_blank())
+
+  ggsave(fg$f3, figura_status, width = 10, height = 6, dpi = 300, bg = "white")
+  cat("Figures saved:", fg$f1, "and", fg$f3, "\n")
+}
 
 
 
@@ -3150,7 +3289,8 @@ testar_dependencia <- function(x, y, n_perm = 2000, seed = 123, min_n = 10) {
 
 arestas_modelo_completo <- data.frame(
   From = arestas_modelo$from, To = arestas_modelo$to, Sign = arestas_modelo$sign,
-  Aresta = arestas_modelo$aresta, stringsAsFactors = FALSE
+  Aresta = arestas_modelo$aresta, Branch = arestas_modelo$branch, Via = arestas_modelo$via,
+  stringsAsFactors = FALSE
 )
 
 calcular_nmi_ggc_geo <- function(arestas_df) {
@@ -3164,9 +3304,9 @@ calcular_nmi_ggc_geo <- function(arestas_df) {
     linhas <- lapply(seq_len(nrow(arestas_df)), function(i) {
       g_from <- encontrar_gene(arestas_df$From[i], nomes)
       g_to   <- encontrar_gene(arestas_df$To[i], nomes)
-      base <- data.frame(Dataset = nome_ds, Aresta = arestas_df$Aresta[i],
-                         From = arestas_df$From[i], To = arestas_df$To[i], Sign = arestas_df$Sign[i],
-                         stringsAsFactors = FALSE)
+      base <- data.frame(Dataset = nome_ds, Branch = arestas_df$Branch[i], Aresta = arestas_df$Aresta[i],
+                         From = arestas_df$From[i], To = arestas_df$To[i], Via = arestas_df$Via[i],
+                         Sign = arestas_df$Sign[i], stringsAsFactors = FALSE)
       if (is.na(g_from) || is.na(g_to)) {
         return(cbind(base, t(testar_dependencia(numeric(0), numeric(0)))))
       }
@@ -3177,7 +3317,7 @@ calcular_nmi_ggc_geo <- function(arestas_df) {
   }
 
   bind_rows(todos) %>%
-    group_by(Dataset) %>%
+    group_by(Dataset, Branch) %>%   # BH por dataset e por ramo (a via principal não muda)
     mutate(p_adj_perm = p.adjust(p_perm, method = "BH")) %>%
     ungroup() %>%
     mutate(
@@ -3195,42 +3335,53 @@ df_nmi_ggc_3ds_corrigido <- calcular_nmi_ggc_geo(arestas_modelo_completo)
 print(as.data.frame(df_nmi_ggc_3ds_corrigido))
 write.csv(df_nmi_ggc_3ds_corrigido, "GEO_NMI_GGC_permutation.csv", row.names = FALSE)
 
-# FIGURA
-df_plot <- df_nmi_ggc_3ds_corrigido %>%
-  filter(Status != "GENE_ABSENT") %>%
-  pivot_longer(cols = c(NMI, GGC), names_to = "Metrica", values_to = "Valor") %>%
-  mutate(Aresta = factor(Aresta, levels = arestas_modelo_completo$Aresta),
-         Null_P95 = ifelse(Metrica == "GGC", GGC_null_p95, NA_real_))
+# FIGURA — uma por ramo. A da via principal mantém o nome original (Figura 8A do manuscrito);
+# a do ramo pró-piroptose é a Figura 9A.
+figuras_nmi_geo <- list(
+  list(branch = RAMO_PRINCIPAL, titulo = "Informational Validation of the Pathway (NMI and GGC)",
+       arquivo = "Fig_Validation_Pathway_DDR_GSDME.png"),
+  list(branch = RAMO_PIROPTOSE, titulo = "Informational Validation of the Pyroptotic Branch (NMI and GGC)",
+       arquivo = "Fig_Validation_Pyroptotic_Branch_GEO.png")
+)
 
-p_nmi_ggc_corrigido <- ggplot(df_plot, aes(x = Aresta, y = Valor, fill = Status)) +
-  geom_col(width = 0.7) +
-  geom_errorbar(aes(ymin = Null_P95, ymax = Null_P95), width = 0.8, linetype = "dashed",
-                color = "black", na.rm = TRUE) +
-  facet_grid(Dataset ~ Metrica, scales = "free_y") +
-  scale_fill_manual(values = c("SIGNIFICANT DEPENDENCE" = "#27AE60", "NOT SIGNIFICANT" = "#E74C3C")) +
-  labs(
-    title = "Informational Validation of the Pathway (NMI and GGC)",
-    subtitle = paste0("Primary tumour samples; TRPM3 as proxy of miR-204-5p.\n",
-                      "Colour = permutation test (BH p.adj < 0.05); dashed line = 95th percentile of GGC under independence"),
-    x = "Regulatory Interactions of Route", y = "Dependency Score", fill = "Edge Status"
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(plot.title = element_text(face = "bold", size = 13),
-        axis.text.x = element_text(angle = 45, hjust = 1, face = "bold", size = 8),
-        strip.background = element_rect(fill = "#ECF0F1", color = NA),
-        legend.position = "top")
+for (fg in figuras_nmi_geo) {
+  df_plot <- df_nmi_ggc_3ds_corrigido %>%
+    filter(Branch == fg$branch, Status != "GENE_ABSENT") %>%
+    pivot_longer(cols = c(NMI, GGC), names_to = "Metrica", values_to = "Valor") %>%
+    mutate(Aresta = factor(Aresta, levels = arestas_modelo_completo$Aresta[arestas_modelo_completo$Branch == fg$branch]),
+           Null_P95 = ifelse(Metrica == "GGC", GGC_null_p95, NA_real_))
 
-ggsave("Fig_Validation_Pathway_DDR_GSDME.png", plot = p_nmi_ggc_corrigido, width = 12, height = 8, dpi = 300, bg = "white")
-cat("\nFigura salva com sucesso!\n")
+  p_nmi_ggc_corrigido <- ggplot(df_plot, aes(x = Aresta, y = Valor, fill = Status)) +
+    geom_col(width = 0.7) +
+    geom_errorbar(aes(ymin = Null_P95, ymax = Null_P95), width = 0.8, linetype = "dashed",
+                  color = "black", na.rm = TRUE) +
+    facet_grid(Dataset ~ Metrica, scales = "free_y") +
+    scale_fill_manual(values = c("SIGNIFICANT DEPENDENCE" = "#27AE60", "NOT SIGNIFICANT" = "#E74C3C")) +
+    labs(
+      title = fg$titulo,
+      subtitle = paste0("Primary tumour samples; TRPM3 as proxy of miR-204-5p.\n",
+                        "Colour = permutation test (BH p.adj < 0.05); dashed line = 95th percentile of GGC under independence",
+                        if (fg$branch == RAMO_PIROPTOSE) paste0("\n", NOTA_VIA) else ""),
+      x = "Regulatory Interactions of Route", y = "Dependency Score", fill = "Edge Status"
+    ) +
+    theme_minimal(base_size = 11) +
+    theme(plot.title = element_text(face = "bold", size = 13),
+          axis.text.x = element_text(angle = 45, hjust = 1, face = "bold", size = 8),
+          strip.background = element_rect(fill = "#ECF0F1", color = NA),
+          legend.position = "top")
+
+  ggsave(fg$arquivo, plot = p_nmi_ggc_corrigido, width = 12, height = 8, dpi = 300, bg = "white")
+  cat("\nFigura salva:", fg$arquivo, "\n")
+}
 
 
 ############# Validation of model #####################
 # ============================================================================
 # FIGURA ÚNICA
 # Layout da figura azul + perturbações da figura vermelha
-# Baseado no modelo: GINsim-GSDME_Pyroptosis(1).zginml
+# Baseado no modelo: GSDME_Pyroptosis_GEO.zginml (regras idênticas às da versão TCGA)
 # ============================================================================
-setwd("~/Downloads/GSDME/")
+setwd(PROJECT_DIR)
 
 required_packages <- c("BoolNet", "ggplot2", "xml2", "grid")
 missing_packages <- required_packages[
@@ -3257,7 +3408,7 @@ suppressPackageStartupMessages({
 # 1. CAMINHOS
 # ----------------------------------------------------------------------------
 
-MODEL_FILE <- "GINsim-GSDME_Pyroptosis.zginml"
+MODEL_FILE <- path.expand(arquivo_ginsim)
 if (!file.exists(MODEL_FILE)) {
   stop("Arquivo do modelo não encontrado: ", MODEL_FILE)
 }
